@@ -1,0 +1,11 @@
+本地开发环境
+server Apache2.4
+document_root:C:\wamp64\www\deltamap\public
+domain name:dm
+
+database:mysql
+username:root
+password:
+
+部署远程服务器
+......
