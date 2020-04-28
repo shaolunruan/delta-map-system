@@ -1,0 +1,314 @@
+@background-color: #fff;
+@pricolor: #000;
+@seccolor: #4737ff;
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    // margin: auto;
+    font-size: 14px;
+    font-weight: 300;
+    background: @background-color;
+    font-family: Montserrat, sans-serif; //设置全局的字体
+    
+    // overflow-x: hidden;//
+    // -webkit-font-smoothing: antialiased;
+    // text-rendering: optimizeLegibility;/
+
+    header {
+        // padding: 10px;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        border-bottom: solid 1px @pricolor;
+
+        .left {
+            min-width: 100px;
+            text-align: center;
+
+            .select {
+                padding: 10px 15px;
+                font-size: medium;
+                cursor: pointer;
+            }
+
+            .icon {
+                font-size: 1.75em;
+            }
+        }
+
+        .mid {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            /*定义body的元素垂直居中*/
+            justify-content: center;
+
+            span {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+        }
+
+        .right {
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            /*定义body的元素垂直居中*/
+            justify-content: center;
+            border-left: solid 1px #000;
+
+            .bt-try {
+                position: relative;
+                // padding: 0 !important;
+                overflow: hidden;
+                transition: width 0.3s ease-in-out;
+
+            }
+
+            a {
+                color: @pricolor;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+            }
+
+            .button {
+                position: relative;
+                display: inline-block;
+                width: 225px;
+                height: 100%;
+                background-color: @background-color;
+                color: #000;
+                line-height: 63px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                border: none;
+                overflow: hidden;
+                transition: all 0.3s ease-in-out;
+
+                span {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    background: @seccolor;
+                    color: #fff;
+                    border-left: none;
+                }
+            }
+
+            &:hover {   
+                border-left: none;
+            }
+        }
+
+        .logo-header {
+            display: block;
+            position: absolute;
+            top: 25%;
+            left: 44%;
+            width: auto;
+            height: 23px;
+            line-height: normal;
+            cursor: pointer;
+
+        }
+    }
+
+    main {
+        // flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .main-left {
+            padding: 55px 20px 20px 100px;
+            display: flex;
+            align-items: center;
+            /*定义body的元素垂直居中*/
+            justify-content: center;
+
+            img {
+                width: 30vw;
+
+            }
+        }
+
+        .main-right {
+            padding: 20px 40px;
+            width: 45vw;
+
+            h1 {
+                font-size: 3.1em;
+                color: @seccolor;
+                // text-align: end;
+                line-height: 1em;
+                padding: 55px 20px 20px 20px;
+                font-weight: normal;
+            }
+
+            p {
+                font-size: 1.6em;
+                color: @pricolor;
+                // text-align: end;
+                // line-height: 0.9em;
+                padding: 20px;
+                font-weight: normal;
+            }
+
+            .explain {
+                padding: 20px;
+                font-size: 1.5em;
+
+                // .padding{
+                //     padding: 70px auto;
+                // }
+
+                .one {
+                    color: rgba(39, 143, 57, 0.87)
+                }
+
+                .two {
+                    color: rgb(214, 55, 55)
+                }
+
+                .three {
+                    color: rgb(170, 170, 170)
+                }
+
+                .four {
+                    color: rgb(95, 95, 95);
+                }
+            }
+        }
+    }
+
+    .btn-try{
+        width: 100%;
+        padding: 100px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+            border-radius: 30px;
+            background: @seccolor;
+            display: inline-block;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: bold;
+            margin-left: 10px;
+            line-height: normal;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            &:hover{
+                background: #fff;
+                color: @seccolor;
+            }
+        }
+        
+    }
+
+    .words{
+        width: 60%;
+        padding: 100px 200px;
+        margin:  0 auto;
+        border-top: solid 1.5px @pricolor;
+        // border-bottom: solid 1.5px @pricolor;
+
+        h1{
+            text-align: center;
+            padding-bottom: 80px;
+
+        }
+        p{
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background: #ededfc;
+
+        padding: 40px 80px;
+        .info-left{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .logo{
+                width: 40vw;
+                height: 60px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                
+    
+                .logo-left{
+                    width: 35%;
+                    border-right: solid @pricolor 1px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    svg{
+                        padding-top: 10px;
+                    }
+                }
+                .logo-right{
+                    width: 35%;
+                    display: flex;
+                    justify-content: center;
+                    svg{
+                        padding-left: 15px;
+                        padding-top: -20px;
+                    }
+                }
+            }
+        }
+
+        .info{
+            // padding: 10px;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            .guanslab{
+                padding-bottom: 10px;
+                h1{
+                    font-size: 1.6em;
+                }
+                p{
+                    font-size: 1em;
+                }
+            }
+
+            .contact{
+                padding-top: 25px;
+                font-size: 1.3em;
+            }
+
+        }
+    }
+}
