@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'Happy bugging ! ';
+    return view('home');
 });
+
+Route::get('/build', function(){
+    return view('build.build');
+});
+
+Route::get('/gallery',function(){
+    return 'im gallery.';
+});
+
+include __DIR__ . '/build/web.php';

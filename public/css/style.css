@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-size: 14px;
+    font-weight: 300;
+    background: #fff;
+    font-family: Montserrat, sans-serif;
+}
+body header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    border-bottom: solid 1px #000;
+}
+body header .left {
+    min-width: 100px;
+    text-align: center;
+    text-decoration: none;
+}
+body header .left .select {
+    padding: 10px 15px;
+    font-size: medium;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+body header .left .icon {
+    font-size: 1.75em;
+    color: #000;
+}
+body header .mid {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /*定义body的元素垂直居中*/
+    justify-content: center;
+}
+body header .mid span {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+body header .right {
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    /*定义body的元素垂直居中*/
+    justify-content: center;
+    border-left: solid 1px #000;
+}
+body header .right .bt-try {
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+body header .right a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+body header .right .button {
+    position: relative;
+    display: inline-block;
+    width: 225px;
+    height: 100%;
+    background-color: #fff;
+    color: #000;
+    line-height: 63px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+body header .right .button span {
+    position: relative;
+    z-index: 1;
+}
+body header .right .button:hover {
+    background: #4737ff;
+    color: #fff;
+    border-left: none;
+}
+body header .right:hover {
+    border-left: none;
+}
+body header .logo-header {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 44%;
+    width: auto;
+    height: 23px;
+    line-height: normal;
+    cursor: pointer;
+}
+body main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+body main .main-left {
+    padding: 55px 20px 20px 100px;
+    display: flex;
+    align-items: center;
+    /*定义body的元素垂直居中*/
+    justify-content: center;
+}
+body main .main-left img {
+    width: 30vw;
+}
+body main .main-right {
+    padding: 20px 40px;
+    width: 45vw;
+}
+body main .main-right h1 {
+    font-size: 3.1em;
+    color: #4737ff;
+    line-height: 1em;
+    padding: 55px 20px 20px 20px;
+    font-weight: normal;
+}
+body main .main-right p {
+    font-size: 1.6em;
+    color: #000;
+    padding: 20px;
+    font-weight: normal;
+}
+body main .main-right .explain {
+    padding: 20px;
+    font-size: 1.5em;
+}
+body main .main-right .explain .one {
+    color: rgba(39, 143, 57, 0.87);
+}
+body main .main-right .explain .two {
+    color: #d63737;
+}
+body main .main-right .explain .three {
+    color: #aaaaaa;
+}
+body main .main-right .explain .four {
+    color: #5f5f5f;
+}
+body .btn-try {
+    width: 100%;
+    padding: 100px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+}
+body .btn-try span {
+    border-radius: 30px;
+    background: #4737ff;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: normal;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+}
+body .btn-try span:hover {
+    background: #fff;
+    color: #4737ff;
+}
+body .words {
+    width: 60%;
+    padding: 100px 200px;
+    margin: 0 auto;
+    border-top: solid 1.5px #000;
+}
+body .words .why {
+    text-align: center;
+    padding-bottom: 60px;
+    font-size: 2em;
+    font-weight: bold;
+}
+body .words .why span {
+    padding: 10px;
+    border: solid 2px #000;
+}
+body .words p {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+body footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #ededfc;
+    padding: 40px 80px;
+}
+body footer .info-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body footer .info-left .logo {
+    width: 40vw;
+    height: 60px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+body footer .info-left .logo .logo-left {
+    width: 35%;
+    border-right: solid #000 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body footer .info-left .logo .logo-left svg {
+    padding-top: 20px;
+}
+body footer .info-left .logo .logo-right {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+}
+body footer .info-left .logo .logo-right svg {
+    padding-left: 15px;
+    padding-top: -20px;
+}
+body footer .info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+body footer .info .guanslab {
+    padding-bottom: 10px;
+}
+body footer .info .guanslab h1 {
+    font-size: 1.6em;
+}
+body footer .info .guanslab p {
+    font-size: 1em;
+}
+body footer .info .contact {
+    padding-top: 25px;
+    font-size: 1.3em;
+}

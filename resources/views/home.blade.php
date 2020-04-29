@@ -4,170 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="\node_modules\_font-awesome@4.7.0@font-awesome\css\font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <div class="left">  
-            <div style="padding: 10px;">
-            <i class="icon fa fa-github select" aria-hidden="true"></i>
-            <span class="gallery select select-text">Gallery</span>
-            <span class="about select select-text">About</span>
-            </div>
-            
+<header>
+    <div class="left">
+        <div style="padding: 10px;">
+
+            <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select" aria-hidden="true"></i></a>
+
+            <a href="/gallery"><span class="gallery select select-text">Gallery</span></a>
+            <a href="#about"><span class="about select select-text">About</span></a>
         </div>
-        <div class="mid"></div>
-        <div class="right">
-            <a href="" class="button button-large">
-                <span>HAVE A TRY!</span>
-            </a>
-        </div>
-        <div class="logo-header">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            viewBox="0 5 220 85" width="180" height="65">
-            <style type="text/css">
-                .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
-                .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
-                .st2{fill:#4737FF;}
-                .st3{fill:none;}
-            </style>
-            <g>
-                <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
-                <line class="st1" x1="52.6" y1="24.2" x2="153.4" y2="39.5"/>
-                <circle class="st2" cx="193.6" cy="44.2" r="4"/>
-            </g>
-            <g>
-                <rect x="14" y="12.3" class="st3" width="176.6" height="44.4"/>
-                <path class="st2" d="M19.9,17.1h9.5c6.8,0,10.4,4.6,10.4,10.2c0,7.7-5,13.1-14.2,13.1H15L19.9,17.1z M21.2,36h4.9
+
+    </div>
+    <div class="mid"></div>
+    <div class="right">
+        <a href="/build" class="button button-large">
+            <span>HAVE A TRY!</span>
+        </a>
+    </div>
+    <div class="logo-header">
+        <a href="/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                              viewBox="0 5 220 85" width="180" height="65">
+                <style type="text/css">
+                    .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
+                    .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
+                    .st2{fill:#4737FF;}
+                    .st3{fill:none;}
+                </style>
+                <g>
+                    <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
+                    <line class="st1" x1="52.6" y1="24.2" x2="153.4" y2="39.5"/>
+                    <circle class="st2" cx="193.6" cy="44.2" r="4"/>
+                </g>
+                <g>
+                    <rect x="14" y="12.3" class="st3" width="176.6" height="44.4"/>
+                    <path class="st2" d="M19.9,17.1h9.5c6.8,0,10.4,4.6,10.4,10.2c0,7.7-5,13.1-14.2,13.1H15L19.9,17.1z M21.2,36h4.9
                     c5.6,0,8-4.1,8-8.5c0-4-2.1-6.1-6-6.1h-3.8L21.2,36z"/>
-                <path class="st2" d="M47.5,33.1c0,0.1,0,0.3,0,0.5c0,1.9,1,3.4,3.5,3.4c2,0,2.8-0.6,3.5-1.6h5.3c-1.1,2.9-3.9,5.5-9.2,5.5
+                    <path class="st2" d="M47.5,33.1c0,0.1,0,0.3,0,0.5c0,1.9,1,3.4,3.5,3.4c2,0,2.8-0.6,3.5-1.6h5.3c-1.1,2.9-3.9,5.5-9.2,5.5
                     c-5.7,0-8.1-3.5-8.1-7.8c0-4.7,3.2-10.2,10.4-10.2c5.6,0,8.1,3.3,8.1,7.3c0,1-0.1,1.8-0.4,2.9H47.5z M56,29.8c0-0.1,0-0.2,0-0.3
                     c0-1.8-1.1-2.9-3.4-2.9c-2.4,0-3.8,1.4-4.3,3.3H56z"/>
-                <path class="st2" d="M62.5,40.4l5.2-24.6h5.1l-5.2,24.6H62.5z"/>
-                <path class="st2" d="M73.8,23.3h3l1.1-5.1H83l-1.1,5.1h3.8l-0.8,3.8h-3.8l-1.6,7.4c-0.3,1.5-0.2,2.1,1.4,2.1c0.5,0,1.4,0,1.8-0.1
+                    <path class="st2" d="M62.5,40.4l5.2-24.6h5.1l-5.2,24.6H62.5z"/>
+                    <path class="st2" d="M73.8,23.3h3l1.1-5.1H83l-1.1,5.1h3.8l-0.8,3.8h-3.8l-1.6,7.4c-0.3,1.5-0.2,2.1,1.4,2.1c0.5,0,1.4,0,1.8-0.1
                     L82,40.1c-0.9,0.3-2.1,0.4-3.3,0.4c-4,0-5.1-1.9-4.4-5.1l1.8-8.3h-3L73.8,23.3z"/>
-                <path class="st2" d="M102.5,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
+                    <path class="st2" d="M102.5,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
                     c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
                     c7.5,0,8.5,3.6,7.7,7.1L102.5,35.8z M98,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
                     c2.8,0,4.5-1.3,5.2-4.2L98,32.6z"/>
-                <path class="st2" d="M138.2,31.5c0.8-4,1.9-8.2,2.6-10.8h0c-1.9,4.2-5.7,11.1-10.1,19.7h-4.8c-0.5-7.1-1.2-15.3-1.4-19.7h0
+                    <path class="st2" d="M138.2,31.5c0.8-4,1.9-8.2,2.6-10.8h0c-1.9,4.2-5.7,11.1-10.1,19.7h-4.8c-0.5-7.1-1.2-15.3-1.4-19.7h0
                     c-0.4,2.7-1.2,7.2-2,11.2l-1.8,8.5h-4.9l4.9-23.2h7.8c0.6,6.6,1.4,14.5,1.4,16.5h0c1.3-2.7,5.2-9.8,8.7-16.5h7.8l-4.9,23.2h-5.2
                     L138.2,31.5z"/>
-                <path class="st2" d="M163.6,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
+                    <path class="st2" d="M163.6,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
                     c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
                     c7.5,0,8.5,3.6,7.7,7.1L163.6,35.8z M159.1,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
                     c2.8,0,4.5-1.3,5.2-4.2L159.1,32.6z"/>
-                <path class="st2" d="M172.6,38.6l-1.9,9h-5.1l4.1-19.3c0.5-2.3,0.8-4.1,1-4.9h5.1c0,0.4-0.1,1-0.3,2c1.3-1.4,2.8-2.5,5.8-2.5
+                    <path class="st2" d="M172.6,38.6l-1.9,9h-5.1l4.1-19.3c0.5-2.3,0.8-4.1,1-4.9h5.1c0,0.4-0.1,1-0.3,2c1.3-1.4,2.8-2.5,5.8-2.5
                     c4.1,0,6.6,3.2,6.6,7.2c0,5.6-3.5,10.8-9.9,10.8C174.7,40.9,173.3,39.6,172.6,38.6z M182.4,30.6c0-2.1-0.9-3.7-3.4-3.7
                     c-2.6,0-4.5,1.8-5.1,4.9c-0.6,3.1,0.7,4.9,3.4,4.9C180.6,36.7,182.4,34.1,182.4,30.6z"/>
-            </g>
-            </svg>
-        </div>
-    </header>
-    <main>
-        <div class="main-left">
-            <img src="font-awesome/456.png" >
-        </div>
-
-        <div class="main-right">
-            <h1>
-                The best way to observe the variation of each ego in a group cluster
-            </h1>
-            <p>
-                The main visual metaphor is the delta map, generated according to the delta of each ego in a group during two stages.
-            </p>
-            <div class="explain">
-                <div class="explain-green padding">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                    <span>
-                        The outer semicircle and inner semicircle represent Stage1 and Stage2 respectively.
-                    </span>
-                </div>
-                <div class="explain-green padding">
-                    <i class="fa fa-arrow-left one" aria-hidden="true"></i>
-                    <span>
-                        Stroke in green denotes the ego whose value rises.
-                    </span>
-                </div>
-                <div class="explain-red padding">
-                    <i class="fa fa-arrow-left two" aria-hidden="true"></i>
-                    <span>Stroke in red denotes the ego whose value drops.</span>
-                </div>
-                <div class="explain-length padding ">
-                    <i class="fa fa-arrow-left three" aria-hidden="true"></i>
-                    <span>The inner semicircle includes ego with a delta value greater than the set threshold.</span>
-                </div>
-                <div class="explain-length padding">
-                    <i class="fa fa-arrow-left four" aria-hidden="true"></i>
-                    <span>The length of strokes denote the delta value.</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div class="btn-try">
-        <span>
-            Build It Now!
-        </span>
+                </g>
+            </svg></a>
+    </div>
+</header>
+<main>
+    <div class="main-left">
+        <img src="static/456.png" >
     </div>
 
-    <div class="words">
+    <div class="main-right">
         <h1>
-            Why Delta Map?
+            The best way to observe the variation of each ego in a group cluster
         </h1>
         <p>
-        Delta Map is a brand new graphical design solution for observing each changes in a group. Ranks or fractional segments are arranged in order. Users can visually observe the value changes of all members in two stages within a group by observing the color and length of strokes. What's more, it can filter out the best result set if the user adjusts the sensitivity via GUI. The way to adjust sensitivity can be based on the number of filters, the minimum value or the algorithm we set to help you complete ego filtering to easily obtain the delta that meets the conditions. Delta Map can be used in almost all the situations for the comparison of two stages. Here, you only need to import the data you want to visualize, Delta Map will help you complete all the remaining work. You only need to adjust the parameters interactively to achieve the best results. Don't hesitate, try it now!
+            The main visual metaphor is the delta map, generated according to the delta of each ego in a group during two stages.
         </p>
+        <div class="explain">
+            <div class="explain-green padding">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <span>
+                        The outer semicircle and inner semicircle represent Stage1 and Stage2 respectively.
+                    </span>
+            </div>
+            <div class="explain-green padding">
+                <i class="fa fa-arrow-left one" aria-hidden="true"></i>
+                <span>
+                        Stroke in green denotes the ego whose value rises.
+                    </span>
+            </div>
+            <div class="explain-red padding">
+                <i class="fa fa-arrow-left two" aria-hidden="true"></i>
+                <span>Stroke in red denotes the ego whose value drops.</span>
+            </div>
+            <div class="explain-length padding ">
+                <i class="fa fa-arrow-left three" aria-hidden="true"></i>
+                <span>The inner semicircle includes ego with a delta value greater than the set threshold.</span>
+            </div>
+            <div class="explain-length padding">
+                <i class="fa fa-arrow-left four" aria-hidden="true"></i>
+                <span>The length of strokes denote the delta value.</span>
+            </div>
+        </div>
     </div>
+</main>
 
-    <footer>
-        <div class="info-left">
-            <div class="logo">
+<div class="btn-try" >
+
+            <a href="/build"><span>Build It Now!</span></a>
+
+</div>
+
+<a name="about"></a>
+<div class="words">
+    <div class="why">
+        <span>Why Delta Map?</span>
+    </div>
+    <p>
+        Delta Map is a brand new graphical design solution for observing each changes in a group. Ranks or fractional segments are arranged in order. Users can visually observe the value changes of all members in two stages within a group by observing the color and length of strokes. What's more, it can filter out the best result set if the user adjusts the sensitivity via GUI. The way to adjust sensitivity can be based on the number of filters, the minimum value or the algorithm we set to help you complete ego filtering to easily obtain the delta that meets the conditions. Delta Map can be used in almost all the situations for the comparison of two stages. Here, you only need to import the data you want to visualize, Delta Map will help you complete all the remaining work. You only need to adjust the parameters interactively to achieve the best results. Don't hesitate, try it now!
+    </p>
+</div>
+
+<footer>
+    <div class="info-left">
+        <div class="logo">
                 <span class="logo-left">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 5 220 85" width="180" height="65">
-                    <style type="text/css">
-                        .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
-                        .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
-                        .st2{fill:#4737FF;}
-                        .st3{fill:none;}
-                    </style>
-                    <g>
-                        <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
-                        <line class="st1" x1="52.6" y1="24.2" x2="153.4" y2="39.5"/>
-                        <circle class="st2" cx="193.6" cy="44.2" r="4"/>
-                    </g>
-                    <g>
-                        <rect x="14" y="12.3" class="st3" width="176.6" height="44.4"/>
-                        <path class="st2" d="M19.9,17.1h9.5c6.8,0,10.4,4.6,10.4,10.2c0,7.7-5,13.1-14.2,13.1H15L19.9,17.1z M21.2,36h4.9
-                            c5.6,0,8-4.1,8-8.5c0-4-2.1-6.1-6-6.1h-3.8L21.2,36z"/>
-                        <path class="st2" d="M47.5,33.1c0,0.1,0,0.3,0,0.5c0,1.9,1,3.4,3.5,3.4c2,0,2.8-0.6,3.5-1.6h5.3c-1.1,2.9-3.9,5.5-9.2,5.5
-                            c-5.7,0-8.1-3.5-8.1-7.8c0-4.7,3.2-10.2,10.4-10.2c5.6,0,8.1,3.3,8.1,7.3c0,1-0.1,1.8-0.4,2.9H47.5z M56,29.8c0-0.1,0-0.2,0-0.3
-                            c0-1.8-1.1-2.9-3.4-2.9c-2.4,0-3.8,1.4-4.3,3.3H56z"/>
-                        <path class="st2" d="M62.5,40.4l5.2-24.6h5.1l-5.2,24.6H62.5z"/>
-                        <path class="st2" d="M73.8,23.3h3l1.1-5.1H83l-1.1,5.1h3.8l-0.8,3.8h-3.8l-1.6,7.4c-0.3,1.5-0.2,2.1,1.4,2.1c0.5,0,1.4,0,1.8-0.1
-                            L82,40.1c-0.9,0.3-2.1,0.4-3.3,0.4c-4,0-5.1-1.9-4.4-5.1l1.8-8.3h-3L73.8,23.3z"/>
-                        <path class="st2" d="M102.5,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
-                            c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
-                            c7.5,0,8.5,3.6,7.7,7.1L102.5,35.8z M98,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
-                            c2.8,0,4.5-1.3,5.2-4.2L98,32.6z"/>
-                        <path class="st2" d="M138.2,31.5c0.8-4,1.9-8.2,2.6-10.8h0c-1.9,4.2-5.7,11.1-10.1,19.7h-4.8c-0.5-7.1-1.2-15.3-1.4-19.7h0
-                            c-0.4,2.7-1.2,7.2-2,11.2l-1.8,8.5h-4.9l4.9-23.2h7.8c0.6,6.6,1.4,14.5,1.4,16.5h0c1.3-2.7,5.2-9.8,8.7-16.5h7.8l-4.9,23.2h-5.2
-                            L138.2,31.5z"/>
-                        <path class="st2" d="M163.6,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
-                            c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
-                            c7.5,0,8.5,3.6,7.7,7.1L163.6,35.8z M159.1,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
-                            c2.8,0,4.5-1.3,5.2-4.2L159.1,32.6z"/>
-                        <path class="st2" d="M172.6,38.6l-1.9,9h-5.1l4.1-19.3c0.5-2.3,0.8-4.1,1-4.9h5.1c0,0.4-0.1,1-0.3,2c1.3-1.4,2.8-2.5,5.8-2.5
-                            c4.1,0,6.6,3.2,6.6,7.2c0,5.6-3.5,10.8-9.9,10.8C174.7,40.9,173.3,39.6,172.6,38.6z M182.4,30.6c0-2.1-0.9-3.7-3.4-3.7
-                            c-2.6,0-4.5,1.8-5.1,4.9c-0.6,3.1,0.7,4.9,3.4,4.9C180.6,36.7,182.4,34.1,182.4,30.6z"/>
-                    </g>
-                    </svg>
+                    <div class="logo-header">
+        <a href="/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                              viewBox="0 5 220 85" width="180" height="65">
+                <style type="text/css">
+                    .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
+                    .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
+                    .st2{fill:#4737FF;}
+                    .st3{fill:none;}
+                </style>
+                <g>
+                    <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
+                    <line class="st1" x1="52.6" y1="24.2" x2="153.4" y2="39.5"/>
+                    <circle class="st2" cx="193.6" cy="44.2" r="4"/>
+                </g>
+                <g>
+                    <rect x="14" y="12.3" class="st3" width="176.6" height="44.4"/>
+                    <path class="st2" d="M19.9,17.1h9.5c6.8,0,10.4,4.6,10.4,10.2c0,7.7-5,13.1-14.2,13.1H15L19.9,17.1z M21.2,36h4.9
+                    c5.6,0,8-4.1,8-8.5c0-4-2.1-6.1-6-6.1h-3.8L21.2,36z"/>
+                    <path class="st2" d="M47.5,33.1c0,0.1,0,0.3,0,0.5c0,1.9,1,3.4,3.5,3.4c2,0,2.8-0.6,3.5-1.6h5.3c-1.1,2.9-3.9,5.5-9.2,5.5
+                    c-5.7,0-8.1-3.5-8.1-7.8c0-4.7,3.2-10.2,10.4-10.2c5.6,0,8.1,3.3,8.1,7.3c0,1-0.1,1.8-0.4,2.9H47.5z M56,29.8c0-0.1,0-0.2,0-0.3
+                    c0-1.8-1.1-2.9-3.4-2.9c-2.4,0-3.8,1.4-4.3,3.3H56z"/>
+                    <path class="st2" d="M62.5,40.4l5.2-24.6h5.1l-5.2,24.6H62.5z"/>
+                    <path class="st2" d="M73.8,23.3h3l1.1-5.1H83l-1.1,5.1h3.8l-0.8,3.8h-3.8l-1.6,7.4c-0.3,1.5-0.2,2.1,1.4,2.1c0.5,0,1.4,0,1.8-0.1
+                    L82,40.1c-0.9,0.3-2.1,0.4-3.3,0.4c-4,0-5.1-1.9-4.4-5.1l1.8-8.3h-3L73.8,23.3z"/>
+                    <path class="st2" d="M102.5,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
+                    c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
+                    c7.5,0,8.5,3.6,7.7,7.1L102.5,35.8z M98,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
+                    c2.8,0,4.5-1.3,5.2-4.2L98,32.6z"/>
+                    <path class="st2" d="M138.2,31.5c0.8-4,1.9-8.2,2.6-10.8h0c-1.9,4.2-5.7,11.1-10.1,19.7h-4.8c-0.5-7.1-1.2-15.3-1.4-19.7h0
+                    c-0.4,2.7-1.2,7.2-2,11.2l-1.8,8.5h-4.9l4.9-23.2h7.8c0.6,6.6,1.4,14.5,1.4,16.5h0c1.3-2.7,5.2-9.8,8.7-16.5h7.8l-4.9,23.2h-5.2
+                    L138.2,31.5z"/>
+                    <path class="st2" d="M163.6,35.8c-0.5,2.3-0.8,3.9-0.9,4.6h-5c0-0.5,0.1-1.5,0.2-2.1c-1.1,1.5-2.9,2.5-6,2.5c-4.4,0-5.8-2.8-5.8-5
+                    c0-4.9,5-6,9.3-6.4c1.3-0.1,3.2-0.2,4.4-0.2l0.1-0.3c0.3-1.4-0.4-2.6-2.9-2.6c-2,0-3,0.7-3.4,1.9h-5.3c0.6-2.5,2.5-5.4,8.8-5.4
+                    c7.5,0,8.5,3.6,7.7,7.1L163.6,35.8z M159.1,32.6c-1.2,0-2.5,0.1-3.5,0.2c-1.8,0.2-4.1,0.6-4.1,2.5c0,1,0.8,1.7,2.4,1.7
+                    c2.8,0,4.5-1.3,5.2-4.2L159.1,32.6z"/>
+                    <path class="st2" d="M172.6,38.6l-1.9,9h-5.1l4.1-19.3c0.5-2.3,0.8-4.1,1-4.9h5.1c0,0.4-0.1,1-0.3,2c1.3-1.4,2.8-2.5,5.8-2.5
+                    c4.1,0,6.6,3.2,6.6,7.2c0,5.6-3.5,10.8-9.9,10.8C174.7,40.9,173.3,39.6,172.6,38.6z M182.4,30.6c0-2.1-0.9-3.7-3.4-3.7
+                    c-2.6,0-4.5,1.8-5.1,4.9c-0.6,3.1,0.7,4.9,3.4,4.9C180.6,36.7,182.4,34.1,182.4,30.6z"/>
+                </g>
+            </svg></a>
+    </div>
                 </span>
-                <span class="logo-right">
-                    <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 25 250 100" width="150" height="75">
+            <span class="logo-right">
+                    <a href="http://www.guans.cs.kent.edu/"><svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 25 250 100" width="150" height="75">
                     <style type="text/css">
                         .st01{fill:#FFBC4A;}
                         .st11{fill:#31B729;}
@@ -276,26 +281,26 @@
                                 v3.1H179.5z"/>
                         </g>
                     </g>
-                    </svg>
+                    </svg></a>
                 </span>
-            </div>
         </div>
-        <div class="info">
-            <div class="guanslab">
-                <h1>GUANS Lab @ Kent State University</h1>
-                <p>
-                    We are a computer science research group at the Kent State University. Our aim is to design next-generation hybrid hetrogenous HPC-Cloud computing systems and workflow tools for current HPC, Big Data, and Deep Learning AI communities.
-                </p>
-            </div>
-            <div class="contact">
-                <p>
-                    Contact:</br>
-                    MSB 160, Kent State University</br>
-                    Kent, OH, 44240</br>
-                    USA     </br>
-                </p>
-            </div>
+    </div>
+    <div class="info">
+        <div class="guanslab">
+            <h1>GUANS Lab @ Kent State University</h1>
+            <p>
+                We are a computer science research group at the Kent State University. Our aim is to design next-generation hybrid hetrogenous HPC-Cloud computing systems and workflow tools for current HPC, Big Data, and Deep Learning AI communities.
+            </p>
         </div>
-    </footer>
+        <div class="contact">
+            <p>
+                Contact:</br>
+                MSB 160, Kent State University</br>
+                Kent, OH, 44240</br>
+                USA     </br>
+            </p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
