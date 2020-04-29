@@ -19,6 +19,7 @@
     "sass-loader": "^8.0.0"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "react": "^16.13.1"
   }
 }
