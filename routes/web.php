@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/build', function(){
-    return view('build.build');
-});
+
 
 Route::get('/gallery',function(){
     return 'im gallery.';
