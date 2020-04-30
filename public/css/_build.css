@@ -1,0 +1,26 @@
+.content .children {
+    position: relative;
+    width: 80%;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content .children .nav{
+    width: 100%;
+}
+
+.content .children .upload{
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.content .form-horizontal{
+    width:50%;
+    padding-top: 40px;
+}
+
+
+
