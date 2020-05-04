@@ -12,15 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+include __DIR__ . '/build/web.php';
+include __DIR__ . '/gallery/web.php';
 
 Route::get('/', function () {
     return view('home');
 });
 
-
-
-Route::get('/gallery',function(){
-    return 'im gallery.';
-});
-
-include __DIR__ . '/build/web.php';

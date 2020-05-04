@@ -21,7 +21,7 @@
     </div>
     <div class="mid"></div>
     <div class="right">
-        <a href="/build" class="button button-large">
+        <a href="/build/upload" class="button button-large">
             <span>HAVE A TRY!</span>
         </a>
     </div>
@@ -110,7 +110,7 @@
 
 <div class="btn-try" >
 
-            <a href="/build"><span>Build It Now!</span></a>
+            <a href="/build/upload"><span>Build It Now!</span></a>
 
 </div>
 

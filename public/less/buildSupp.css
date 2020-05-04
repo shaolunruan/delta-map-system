@@ -1,0 +1,29 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.content .children {
+  position: relative;
+  width: 80%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content .children .bg-danger {
+  width: 60%;
+  padding: 10px;
+  margin: 60px 0 0 0 ;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+}
+.content .children .nav {
+  width: 100%;
+}
+.content .children form button {
+  margin-left: 20%;
+}
+/*# sourceMappingURL=buildSupp.css.map */
