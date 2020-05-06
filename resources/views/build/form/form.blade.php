@@ -11,6 +11,17 @@
             padding: 15px;
         }
     </style>
+<!--    --><?php
+//        use Illuminate\Support\Facades\Session
+//    ?>
+
+    @if(Session::has('message'))
+        <div class="alert alert-success" role="alert"
+        style="padding-top: 20px;
+        margin-bottom: -20px;
+        "
+        >{{Session::get('message')}}</div>
+    @endif
 
     <div class="children">
         <ul class="nav nav-tabs">
@@ -18,7 +29,7 @@
             <li role="presentation" class="active"><a href="#">Step2</a></li>
         </ul>
 
-        <form class="form-horizontal" name="form">
+        <form class="form-horizontal" name="form" action="" method="post">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
@@ -89,7 +100,7 @@
 
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Filter Mode</label>
-                <select class="form-control" name="filtermode" >
+                <select class="form-control" name="filteermode" >
                     <option value="Number" >Based on Number</option>
                     <option value="Value">Based on Value</option>
                     <option value="Algorithm">Based on Algorithm</option>
@@ -97,21 +108,21 @@
             </div>
 
             <div class="form-group setNumber item" style="display:block">
-                <label class="col-sm-2 control-label">Set Filtering Number</label>
+                <label class="col-sm-2 control-label">Filtering Number</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail">
                 </div>
             </div>
 
             <div class="form-group setValue item" style="display:none">
-                <label class="col-sm-2 control-label">Set Minimum Value</label>
+                <label class="col-sm-2 control-label">Minimum Value</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail">
                 </div>
             </div>
 
             <div class="form-group setAlgorithm item" style="display:none">
-                <label class="col-sm-2 control-label">Set Algorithm</label>
+                <label class="col-sm-2 control-label">Algorithm</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail">
                 </div>

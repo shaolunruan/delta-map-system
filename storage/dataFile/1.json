@@ -1,0 +1,20 @@
+[
+    {
+        "name":"shaolun",
+        "age": 23,
+        "mid": 40,
+        "fin": 60
+    },
+    {
+        "name":"betis",
+        "age": 24,
+        "mid": 46,
+        "fin": 80
+    },
+    {
+        "name":"qiang",
+        "age": 30,
+        "mid": 70,
+        "fin": 90
+    }
+]

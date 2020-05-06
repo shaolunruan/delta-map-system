@@ -16,13 +16,13 @@
             <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select" aria-hidden="true"></i></a>
 
             <a href="/gallery"><span class="gallery select select-text">Gallery</span></a>
-            <a href="#about"><span class="about select select-text">About</span></a>
+            <a href="/#about"><span class="about select select-text">About</span></a>
         </div>
 
     </div>
     <div class="mid"></div>
     <div class="right">
-        <a href="/build" class="button button-large">
+        <a href="" class="button button-large">
             <span>HAVE A TRY!</span>
         </a>
     </div>
