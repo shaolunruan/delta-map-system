@@ -11,17 +11,20 @@
             padding: 15px;
         }
     </style>
-<!--    --><?php
-//        use Illuminate\Support\Facades\Session
-//    ?>
 
-    @if(Session::has('message'))
+    @if(isset($message))
         <div class="alert alert-success" role="alert"
         style="padding-top: 20px;
         margin-bottom: -20px;
-        "
-        >{{Session::get('message')}}</div>
+        ">
+            {{$message}}
+        </div>
     @endif
+
+ @foreach($keys as $key)
+            {{$key}}
+ @endforeach
+
 
     <div class="children">
         <ul class="nav nav-tabs">
@@ -100,7 +103,7 @@
 
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Filter Mode</label>
-                <select class="form-control" name="filteermode" >
+                <select class="form-control" id="filtermode" >
                     <option value="Number" >Based on Number</option>
                     <option value="Value">Based on Value</option>
                     <option value="Algorithm">Based on Algorithm</option>
@@ -143,7 +146,6 @@
                         document.querySelector('.setNumber').style.display = 'none'
                     }
                 }
-                console.log(document.form.filtermode)
             </script>
 
             {{csrf_field()}}
