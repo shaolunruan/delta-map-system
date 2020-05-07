@@ -12,7 +12,8 @@
     <div class="left">
         <div style="padding: 10px;">
 
-            <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select" aria-hidden="true"></i></a>
+            <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select"
+                                                                          aria-hidden="true"></i></a>
 
             <a href="/gallery"><span class="gallery select select-text">Gallery</span></a>
             <a href="#about"><span class="about select select-text">About</span></a>
@@ -26,13 +27,30 @@
         </a>
     </div>
     <div class="logo-header">
-        <a href="/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                              viewBox="0 5 220 85" width="180" height="65">
+        <a href="/">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                 y="0px"
+                 viewBox="0 5 220 85" width="180" height="65">
                 <style type="text/css">
-                    .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
-                    .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
-                    .st2{fill:#4737FF;}
-                    .st3{fill:none;}
+                    .st0 {
+                        fill: none;
+                        stroke: #DD2911;
+                        stroke-width: 2px;
+                    }
+
+                    .st1 {
+                        fill: none;
+                        stroke: #007E45;
+                        stroke-width: 2px;
+                    }
+
+                    .st2 {
+                        fill: #4737FF;
+                    }
+
+                    .st3 {
+                        fill: none;
+                    }
                 </style>
                 <g>
                     <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
@@ -64,12 +82,13 @@
                     c4.1,0,6.6,3.2,6.6,7.2c0,5.6-3.5,10.8-9.9,10.8C174.7,40.9,173.3,39.6,172.6,38.6z M182.4,30.6c0-2.1-0.9-3.7-3.4-3.7
                     c-2.6,0-4.5,1.8-5.1,4.9c-0.6,3.1,0.7,4.9,3.4,4.9C180.6,36.7,182.4,34.1,182.4,30.6z"/>
                 </g>
-            </svg></a>
+            </svg>
+        </a>
     </div>
 </header>
 <main>
     <div class="main-left">
-        <img src="static/456.png" >
+        <img src="static/456.png">
     </div>
 
     <div class="main-right">
@@ -77,7 +96,8 @@
             The best way to observe the variation of each ego in a group cluster
         </h1>
         <p>
-            The main visual metaphor is the delta map, generated according to the delta of each ego in a group during two stages.
+            The main visual metaphor is the delta map, generated according to the delta of each ego in a group during
+            two stages.
         </p>
         <div class="explain">
             <div class="explain-green padding">
@@ -108,9 +128,9 @@
     </div>
 </main>
 
-<div class="btn-try" >
+<div class="btn-try">
 
-            <a href="/build/upload"><span>Build It Now!</span></a>
+    <a href="/build/upload"><span>Build It Now!</span></a>
 
 </div>
 
@@ -120,8 +140,23 @@
         <span>Why Delta Map?</span>
     </div>
     <p>
-        Delta Map is a brand new graphical design solution for observing each changes in a group. Ranks or fractional segments are arranged in order. Users can visually observe the value changes of all members in two stages within a group by observing the color and length of strokes. What's more, it can filter out the best result set if the user adjusts the sensitivity via GUI. The way to adjust sensitivity can be based on the number of filters, the minimum value or the algorithm we set to help you complete ego filtering to easily obtain the delta that meets the conditions. Delta Map can be used in almost all the situations for the comparison of two stages. Here, you only need to import the data you want to visualize, Delta Map will help you complete all the remaining work. You only need to adjust the parameters interactively to achieve the best results. Don't hesitate, try it now!
+        Delta Map is a brand new graphical design solution for observing each changes in a group. Ranks or fractional
+        segments are arranged in order. Users can visually observe the value changes of all members in two stages within
+        a group by observing the color and length of strokes. What's more, it can filter out the best result set if the
+        user adjusts the sensitivity via GUI. The way to adjust sensitivity can be based on the number of filters, the
+        minimum value or the algorithm we set to help you complete ego filtering to easily obtain the delta that meets
+        the conditions. Delta Map can be used in almost all the situations for the comparison of two stages. Here, you
+        only need to import the data you want to visualize, Delta Map will help you complete all the remaining work. You
+        only need to adjust the parameters interactively to achieve the best results. Don't hesitate, try it now!
     </p>
+</div>
+
+<div class="install">
+    Download the package, please install via npm
+
+    npm install guans-deltamap
+
+    The composer version is on the way.
 </div>
 
 <footer>
@@ -129,13 +164,30 @@
         <div class="logo">
                 <span class="logo-left">
                     <div class="logo-header">
-        <a href="/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                              viewBox="0 5 220 85" width="180" height="65">
+        <a href="/">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         x="0px" y="0px"
+                         viewBox="0 5 220 85" width="180" height="65">
                 <style type="text/css">
-                    .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
-                    .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
-                    .st2{fill:#4737FF;}
-                    .st3{fill:none;}
+                    .st0 {
+                        fill: none;
+                        stroke: #DD2911;
+                        stroke-width: 2px;
+                    }
+
+                    .st1 {
+                        fill: none;
+                        stroke: #007E45;
+                        stroke-width: 2px;
+                    }
+
+                    .st2 {
+                        fill: #4737FF;
+                    }
+
+                    .st3 {
+                        fill: none;
+                    }
                 </style>
                 <g>
                     <line class="st0" x1="117.3" y1="38.1" x2="80.6" y2="19.8"/>
@@ -171,16 +223,37 @@
     </div>
                 </span>
             <span class="logo-right">
-                    <a href="http://www.guans.cs.kent.edu/"><svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"
-                                          viewBox="0 25 250 100" width="150" height="75">
+                    <a href="http://www.guans.cs.kent.edu/">
+                        <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 25 250 100" width="150" height="75">
                     <style type="text/css">
-                        .st01{fill:#FFBC4A;}
-                        .st11{fill:#31B729;}
-                        .st21{fill:#FF5D5B;}
-                        .st31{fill:#5171FE;}
-                        .st41{fill:none;}
-                        .st51{enable-background:new    ;}
-                        .st61{fill:#BFBFBF;}
+                        .st01 {
+                            fill: #FFBC4A;
+                        }
+
+                        .st11 {
+                            fill: #31B729;
+                        }
+
+                        .st21 {
+                            fill: #FF5D5B;
+                        }
+
+                        .st31 {
+                            fill: #5171FE;
+                        }
+
+                        .st41 {
+                            fill: none;
+                        }
+
+                        .st51 {
+                            enable-background: new;
+                        }
+
+                        .st61 {
+                            fill: #BFBFBF;
+                        }
                     </style>
                     <g>
                         <g>
@@ -220,7 +293,8 @@
                                     c-1.6-4.3-2.8-7.8-3.6-10.6c-0.7,3.3-1.6,6.5-2.8,9.8L127,67.4z"/>
                             </g>
                             <g class="st51">
-                                <path class="st11" d="M165.4,88.4V37.2h7l26.9,40.2V37.2h6.5v51.2h-7l-26.9-40.2v40.2H165.4z"/>
+                                <path class="st11"
+                                      d="M165.4,88.4V37.2h7l26.9,40.2V37.2h6.5v51.2h-7l-26.9-40.2v40.2H165.4z"/>
                             </g>
                         </g>
                     </g>
@@ -289,7 +363,9 @@
         <div class="guanslab">
             <h1>GUANS Lab @ Kent State University</h1>
             <p>
-                We are a computer science research group at the Kent State University. Our aim is to design next-generation hybrid hetrogenous HPC-Cloud computing systems and workflow tools for current HPC, Big Data, and Deep Learning AI communities.
+                We are a computer science research group at the Kent State University. Our aim is to design
+                next-generation hybrid hetrogenous HPC-Cloud computing systems and workflow tools for current HPC, Big
+                Data, and Deep Learning AI communities.
             </p>
         </div>
         <div class="contact">
