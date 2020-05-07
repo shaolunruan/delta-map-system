@@ -90,7 +90,8 @@ class BuildController extends Controller
         $filterMode = $request['filterMode'];
         $number = $request['number'];
         $need = compact('data_name','stage1','stage2','incrementColor','decrementColor','mode','filterMode','number');
-        if ($this->checkVoid($need)){
+//        if ($this->checkVoid($need)){
+        if(true){
             return redirect('/build/view')->with('need',$need);
         }else{
             foreach ($need as $key=>$value) {
@@ -99,9 +100,8 @@ class BuildController extends Controller
                     break;
                 }
             }
-            return back()->with('void',$void);
+            return back()->with('void', $void);
         }
-
     }
 
     public function view()
