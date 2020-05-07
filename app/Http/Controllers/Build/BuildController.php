@@ -37,10 +37,7 @@ class BuildController extends Controller
                         //get all keys
                         $keys = array_keys($data[0]);
 //                        dd(compact('keys'));
-                        return view('build.form.form', [
-                            'keys'=>$keys,
-                            'message'=>"Yh! Datafile uploaded successfully!  Next customize your need below."
-                        ]);
+                        return redirect('/build/form')->with('keys',$keys)->with('message',"Yh! Datafile uploaded successfully!  Next customize your need below.");
                     }
                     if ($request->file('dataFile')->getClientOriginalExtension() == 'csv'){
                         $row = 1;
@@ -76,9 +73,50 @@ class BuildController extends Controller
         return view('build.form.form');
     }
 
-    public function formHandle()
+    public function formHandle(Request $request)
     {
-        //get the inserted data
-        $user = User::where('email','unset_email')->first();
+        $email = $request['email'];
+        $data_name = User::where('email','unset_email')->first()->data_name;
+        //map the email into the data name
+        User::where('email','unset_email')->first()->update(['email'=>$email]);
+
+        //get the customize need array
+        $data_name = $request['data_name'];
+        $stage1 = $request['stage1'];
+        $stage2 = $request['stage2'];
+        $incrementColor = $request['incrementColor'];
+        $decrementColor = $request['decrementColor'];
+        $mode = $request['mode'];
+        $filterMode = $request['filterMode'];
+        $number = $request['number'];
+        $need = compact('data_name','stage1','stage2','incrementColor','decrementColor','mode','filterMode','number');
+        if ($this->checkVoid($need)){
+            return redirect('/build/view')->with('need',$need);
+        }else{
+            foreach ($need as $key=>$value) {
+                if ($value == null) {
+                    $void = $key;
+                    break;
+                }
+            }
+            return back()->with('void',$void);
+        }
+
+    }
+
+    public function view()
+    {
+        return view('build.view.view');
+    }
+
+    protected function checkVoid($arr)
+    {
+        foreach ($arr as $key=>$value){
+            if ($value == null){
+                return false;
+                break;
+            }
+        }
+        return true;
     }
 }

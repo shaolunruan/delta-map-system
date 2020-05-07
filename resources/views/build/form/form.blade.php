@@ -12,18 +12,14 @@
         }
     </style>
 
-    @if(isset($message))
+    @if(Session::get('message'))
         <div class="alert alert-success" role="alert"
         style="padding-top: 20px;
         margin-bottom: -20px;
         ">
-            {{$message}}
+            {{Session::get('message')}}
         </div>
     @endif
-
- @foreach($keys as $key)
-            {{$key}}
- @endforeach
 
 
     <div class="children">
@@ -36,42 +32,65 @@
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Data Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Data Name">
+                    <input type="text" class="form-control" name="data_name" placeholder="Data Name">
                 </div>
             </div>
 
             <div class="item">
                 <label for="inputEmail3" class="col-sm-2 control-label">Stage 1</label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> name
-                </label>
+                @if(Session::has('keys'))
+                    @foreach(Session::get('keys') as $key)
+                        <label class="radio-inline">
+                            <input type="radio" name="stage1" value="{{$key}}"> {{$key}}
+                        </label>
+                    @endforeach
+                @else
+                    <div class="alert alert-danger" role="alert"
+                         style="padding-top: 20px;
+        margin-bottom: -20px;
+        ">
+                        The STAGE1 can not be handled. Please check the valid datafile sample.
+                    </div>
+                @endif
             </div>
+
 
             <div class="item">
                 <label for="inputEmail3" class="col-sm-2 control-label">Stage 2</label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions—" id="inlineRadio1" value="option1"> name
-                </label>
+                @if(Session::has('keys'))
+                    @foreach(Session::get('keys') as $key)
+                        <label class="radio-inline">
+                            <input type="radio" name="stage2" value="{{$key}}"> {{$key}}
+                        </label>
+                    @endforeach
+                @else
+                    <div class="alert alert-danger" role="alert"
+                         style="padding-top: 20px;
+        margin-bottom: -20px;
+        ">
+                        The STAGE2 can not be handled. Please check the valid datafile sample.
+                    </div>
+                @endif
             </div>
 
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Increment</label>
                 <div id="cp1" class="input-group colorpicker-component">
-                    <input type="text" value="#00AABB" class="form-control" />
+                    <input type="text" value="#439d53" class="form-control" name="incrementColor"/>
                     <span class="input-group-addon"><i></i></span>
                 </div>
             </div>
             <script>
                 $(function() {
                     $('#cp1').colorpicker({
-                        color: '#AA3399',
+                        color: '#439d53',
                         format: 'rgb'
                     });
                 });
@@ -80,14 +99,14 @@
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Decrement</label>
                 <div id="cp2" class="input-group colorpicker-component">
-                    <input type="text" value="#00AABB" class="form-control" />
+                    <input type="text" value="#d63737" class="form-control" name="decrementColor"/>
                     <span class="input-group-addon"><i></i></span>
                 </div>
             </div>
             <script>
                 $(function() {
                     $('#cp2').colorpicker({
-                        color: '#AA3399',
+                        color: '#d63737',
                         format: 'rgb'
                     });
                 });
@@ -95,7 +114,7 @@
 
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Model</label>
-                <select class="form-control">
+                <select class="form-control" name="mode">
                     <option>Continuous Distribution</option>
                     <option>Discrete Distribution</option>
                 </select>
@@ -103,7 +122,7 @@
 
             <div class="item">
                 <label for="inputEmail3" class="longer-label col-sm-2 control-label">Filter Mode</label>
-                <select class="form-control" id="filtermode" >
+                <select class="form-control" id="filtermode" name="filterMode">
                     <option value="Number" >Based on Number</option>
                     <option value="Value">Based on Value</option>
                     <option value="Algorithm">Based on Algorithm</option>
@@ -113,21 +132,21 @@
             <div class="form-group setNumber item" style="display:block">
                 <label class="col-sm-2 control-label">Filtering Number</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail">
+                    <input type="text" class="form-control" id="inputEmail" name="number">
                 </div>
             </div>
 
             <div class="form-group setValue item" style="display:none">
                 <label class="col-sm-2 control-label">Minimum Value</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail">
+                    <input type="text" class="form-control" id="inputEmail" name="number">
                 </div>
             </div>
 
             <div class="form-group setAlgorithm item" style="display:none">
                 <label class="col-sm-2 control-label">Algorithm</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail">
+                    <input type="text" class="form-control" id="inputEmail" name="algorithm">
                 </div>
             </div>
             <script>

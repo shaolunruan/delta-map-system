@@ -5,6 +5,5 @@ Route::group(['prefix'=>'build','namespace'=>'Build'], function (){
     Route::post('/upload', 'BuildController@uploadHandle');
     Route::get('/form', 'BuildController@form');
     Route::post('/form', 'BuildController@formHandle');
-
-    Route::get('/test', "BuildController@t");
+    Route::get('/view', 'BuildController@view');
 });
