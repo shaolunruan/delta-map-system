@@ -29,7 +29,7 @@
     <div class="logo-header">
         <a href="/">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                              viewBox="0 5 220 85" width="180" height="65">
+                 viewBox="0 5 220 85" width="180" height="65">
                 <style type="text/css">
                     .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
                     .st1{fill:none;stroke:#007E45;stroke-width: 2px;}
@@ -70,8 +70,10 @@
     </div>
 </header>
 
-<div class="content">
-    @yield('content')
+<div class="content container">
+    <div class="row" style="height: 100%">
+        @yield('content')
+    </div>
 </div>
 
 <footer>

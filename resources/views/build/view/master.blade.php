@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/js/library/_font-awesome@4.7.0@font-awesome\css\font-awesome.css">
+    <link rel="stylesheet" href="../node_modules\_font-awesome@4.7.0@font-awesome\css\font-awesome.min.css">
     <link rel="stylesheet" href="/css/_bt3.css">
 </head>
 <body>
@@ -29,7 +29,7 @@
     <div class="logo-header">
         <a href="/">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                              viewBox="0 5 220 85" width="180" height="65">
+                 viewBox="0 5 220 85" width="180" height="65">
                 <style type="text/css">
                     .st0{fill:none;stroke:#DD2911;stroke-width: 2px;}
                     .st1{fill:none;stroke:#007E45;stroke-width: 2px;}

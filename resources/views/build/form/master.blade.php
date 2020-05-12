@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="../node_modules\_font-awesome@4.7.0@font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" href="/js/library/_font-awesome@4.7.0@font-awesome\css\font-awesome.css">
     <link rel="stylesheet" href="/css/_bt3.css">
 </head>
 <body>
