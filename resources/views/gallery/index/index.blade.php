@@ -55,7 +55,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>1])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -63,7 +63,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>2])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -71,7 +71,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>3])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -79,7 +79,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>4])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -87,7 +87,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>5])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -95,7 +95,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>6])}}" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
     </div>

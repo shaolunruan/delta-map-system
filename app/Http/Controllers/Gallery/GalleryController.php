@@ -11,4 +11,9 @@ class GalleryController extends Controller
     {
         return view('gallery.index.index');
     }
+
+    public function dmsystem($id)
+    {
+        return view('gallery.dmsystem.index');
+    }
 }
