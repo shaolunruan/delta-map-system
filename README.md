@@ -7,6 +7,8 @@ Download the package, please install via `npm`:
 npm install guans-deltamap
 ```
 
+Type in `npm install guans-dmsystem` to download the whole web-based system if necessary.
+
 The `composer` version is on the way.
 
 Contact Us:
