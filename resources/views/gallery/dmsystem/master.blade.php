@@ -71,11 +71,16 @@
 </header>
 
 <div class="content container">
-    <div class="row" style="height: 100%">
-@yield('content')
-</div>
+    <div class="row">
+        @yield('content')
+    </div>
 </div>
 
+<style>
+    .content{
+        /*height: 100%;*/
+    }
+</style>
 <footer>
     <div class="info-left">
         <div class="logo">
