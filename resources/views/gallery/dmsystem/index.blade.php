@@ -68,6 +68,9 @@
             /*margin: 0 auto;*/
             margin: 5px 0 5px 0;
         }
+        .dmsystem>.container-left .custom-control-inline{
+            margin-right: 9px;
+        }
     </style>
     <div class="d-flex flex-row dmsystem">
 {{--        左侧的控制面板--}}
@@ -131,7 +134,7 @@
 
             <div>
             <label class="control-label myLabel pull-left">Select plot</label>
-            <select class="form-control-sm form-control col-sm-8 pull-right">
+            <select class="custom-select-sm custom-select col-sm-8 pull-right">
                 <option>plot-1</option>
                 <option>plot-2</option>
                 <option>plot-3</option>
@@ -141,31 +144,38 @@
 
             <div>
                 <label class="control-label myLabel pull-left">Filter algo</label>
-                <select class="form-control-sm form-control col-sm-8 pull-right">
+                <select class="custom-select-sm custom-select col-sm-8 pull-right " id="algo">
                     <option>number</option>
                     <option>minimal value</option>
                     <option>non-interference</option>
                 </select>
             </div>
+            <script>
+                // $('#algo').attr('disabled',true)
+            </script>
 
             <div>
                 <label class="control-label myLabel">Number to filter</label>
-                <input type="text" class="form-control-sm col-4 pull-right">
+                <input type="text" class="form-control col-4 pull-right">
             </div>
 
             <div>
-                <div class="d-flex justify-content-around">
-                    <label class="radio-inline myText">
-                        <input type="radio" name="stage1" value="1"> Only Inc
-                    </label>
-                    <label class="radio-inline myText">
-                        <input type="radio" name="stage1" value="1"> Only Dec
-                    </label>
-                    <label class="radio-inline myText">
-                        <input type="radio" name="stage1" value="1"> Both
-                    </label>
+            <div class="custom-control custom-radio custom-control-inline" >
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label myText" for="customRadio1">Only Inc</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label myText" for="customRadio2">Only Dec</label>
+            </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label myText" for="customRadio3">Both</label>
                 </div>
             </div>
+
+
+
 
             <button type="button">Update DM</button>
         </div>
