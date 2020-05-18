@@ -8,4 +8,4 @@ require('./bootstrap');
 
 
 /*GalleryController@dmsystem*/
-require('./components/dmsystem/Example');
+require('./components/dmsystem/DM');
