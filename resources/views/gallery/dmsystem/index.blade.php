@@ -191,6 +191,9 @@
                 bar-chart
             </div>
         </div>
+        <div id="example"></div>
     </div>
+    <script type="text/javascript" src="../js/app.js"></script>
+    </script>
 @endsection
 
