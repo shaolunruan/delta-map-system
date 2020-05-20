@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 include __DIR__ . '/build/web.php';
 include __DIR__ . '/gallery/web.php';
+include __DIR__ . '/api/web.php';
+
 
 Route::get('/', function () {
     return view('home');
 });
+
+
 

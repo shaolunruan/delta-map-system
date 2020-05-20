@@ -76,8 +76,8 @@
         }
     </style>
     <div>
-        {{-- 左侧的控制面板组件--}}
-        <div id="dm"></div>
+        {{--所有的视图组件--}}
+        <div id="system"></div>
 
     </div>
     <script type="text/javascript" src="../js/app.js"></script>

@@ -16,4 +16,5 @@ class GalleryController extends Controller
     {
         return view('gallery.dmsystem.index');
     }
+
 }
