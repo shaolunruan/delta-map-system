@@ -29,8 +29,11 @@
         .chart{
             border-top: solid 1px #d8d8d8;
         }
-        .dmsystem .container-left svg{
-            background: #0f6674;
+        .dmsystem .container-left>div:nth-child(1) {
+            flex-grow: 1;
+            width: inherit;
+            /*background: #0f6674;*/
+
         }
         .dmsystem .container-left .name-display{
             border: solid 1px #f8f9fa;

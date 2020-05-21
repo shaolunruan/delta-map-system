@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import * as dm from '../../libs/guans-deltamap/deltamap.min.js'
 import axios from "axios";
 
+import {initChartTop, optionChartTop} from '../../functions/chartTop'
+
 class DM extends Component{
     constructor(props) {
         super(props);
         this.state = {
             selectPlot: 'Highlight Field',
-            // selectPlot:'isSalicylicAcid',
             filterAlgo: 'number',
             appendValue: '',
             display: 'both',
@@ -47,8 +48,7 @@ class DM extends Component{
     }
 
     handleSubmit(event) {
-        let link = this.state.viewData;
-        console.log(dm.getFields(link))
+        initChartTop('topChart',optionChartTop)
         event.preventDefault();
     }
 
@@ -130,7 +130,7 @@ class DM extends Component{
                 <div className="container-left d-flex flex-column justify-content-around">
 
                     {/*{{-- 数据统计视图--}}*/}
-                    <svg height="140px"></svg>
+                    <div id='topChart'></div>
 
 
                     <table className="table table-bordered table-sm table-responsive">

@@ -27,6 +27,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "echarts": "^4.7.0",
     "font-awesome": "^4.7.0",
     "guans-deltamap": "^1.3.22",
     "jquery": "^3.5.0",
