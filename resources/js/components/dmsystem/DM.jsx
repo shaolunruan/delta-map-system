@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import * as dm from 'guans-deltamap';
+import * as dm from '../../libs/guans-deltamap/deltamap.min.js'
 import axios from "axios";
 
 class DM extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            selectPlot: 'plot-1',
+            selectPlot: 'Highlight Field',
+            // selectPlot:'isSalicylicAcid',
             filterAlgo: 'number',
             appendValue: '',
             display: 'both',
 
-            viewData:[]
+            viewData: []
         };
 
         this.selectPlotHandle = this.selectPlotHandle.bind(this)
@@ -23,14 +24,6 @@ class DM extends Component{
 
     }
 
-    componentDidMount() {
-        axios.get('/api/ini')
-            .then(res=>{
-                this.setState({
-                    viewData: res.data.data
-                })
-            })
-    }
 
     selectPlotHandle(event){
         this.setState({selectPlot: event.target.value});
@@ -40,6 +33,8 @@ class DM extends Component{
         this.setState({filterAlgo: event.target.value});
         if(event.target.value === 'non-interference'){
             $('.form-control').attr('disabled',true);
+        }else{
+            $('.form-control').attr('disabled',false);
         }
     }
 
@@ -51,15 +46,86 @@ class DM extends Component{
         this.setState({display: event.target.value});
     }
 
-    handleSubmit(event){
-        dm.varia(this.state.viewData);
+    handleSubmit(event) {
+        let link = this.state.viewData;
+        console.log(dm.getFields(link))
         event.preventDefault();
     }
 
+    componentDidMount() {
+        axios.get('/api/ini')
+            .then(res=>{
+                this.setState({
+                    viewData: res.data.data
+                })
+            })
+    }
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     console.log(!this.state.selectPlot == 'Plot-#'?typeof this.state.viewData[0][this.state.selectPlot]:'')
+    // }
 
     render() {
+        /*条件渲染表头*/
+        let th;
+        if (this.state.viewData.length === 0) {
+            th = <th>#</th>
+        } else {
+            th = dm.getFields(this.state.viewData).map((d, i) => {
+                return <th scope="col" key={i}>{d}</th>
+            })
+        }
+
+        /*条件渲染表格*/
+        let tr;
+        if (this.state.viewData.length === 0) {
+            tr = <tr>
+                <th>#</th>
+            </tr>
+        } else {
+            tr = this.state.viewData.map((tr, i) => {
+                return (
+                    <tr key={i}>
+                        {Object.values(tr).map((d, j) => {
+                            if (typeof d == 'boolean') {
+                                return <td key={j}>{d === true ? '√' : 'x'}</td>
+                            } else {
+                                return <td key={j}>{d}</td>
+                            }
+                        })}
+                    </tr>
+                )
+            })
+            // <tr>
+            //     <th scope="row">1</th>
+            //     <td>Mark</td>
+            //     <td>Otto</td>
+            //     <td>@mdo</td>
+            // </tr>
+        }
+
+        /*条件渲染select plot*/
+        let selection;
+        if (this.state.viewData.length === 0) {
+            selection = <option value="">Data parsing error!</option>
+        } else {
+            selection = dm.getAddFields(this.state.viewData).map((d, i) => {
+                return <option key={i}>{d}</option>
+            })
+        }
+
+        /*条件渲染display名称的类型*/
+        let type;
+        if(this.state.selectPlot !== 'Highlight Field'){
+            type = <span
+            style={{'color': "#74e1f7",'fontSize':'0.9em'}}
+            >{typeof this.state.viewData[0][this.state.selectPlot]}</span>
+        }else{
+            type = null
+        }
+
         return (
-            // {{--        左侧的控制面板--}}
+            // {{-- 左侧的控制面板--}}
             <div className="d-flex flex-row dmsystem">
                 <div className="container-left d-flex flex-column justify-content-around">
 
@@ -70,56 +136,18 @@ class DM extends Component{
                     <table className="table table-bordered table-sm table-responsive">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Username</th>
+                            {th}
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        {tr}
                         </tbody>
                     </table>
 
                     <hr className="text-center"/>
 
                     <div className="text-center text-info name-display">
-                        name display
+                        {type} {this.state.selectPlot}
                     </div>
 
                     <div>
@@ -128,10 +156,7 @@ class DM extends Component{
                                 value={this.state.selectPlot}
                                 onChange={this.selectPlotHandle}
                         >
-                            <option>plot-1</option>
-                            <option>plot-2</option>
-                            <option>plot-3</option>
-                            <option>plot-4</option>
+                            {selection}
                         </select>
                     </div>
 
@@ -151,21 +176,24 @@ class DM extends Component{
                         <label className="control-label myLabel">Value</label>
                         <input type="text" className="form-control col-6 pull-right"
                                value={this.state.appendValue}
-                               onChange = {this.appendValueHandle}
+                               onChange={this.appendValueHandle}
                         />
                     </div>
 
                     <div onChange={this.displayHandle}>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="onlyInc" id="customRadio1" name="customRadio" className="custom-control-input" />
+                            <input type="radio" value="onlyInc" id="customRadio1" name="customRadio"
+                                   className="custom-control-input"/>
                             <label className="custom-control-label myText" htmlFor="customRadio1">Only Inc</label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="onlyDec" id="customRadio2" name="customRadio" className="custom-control-input"/>
+                            <input type="radio" value="onlyDec" id="customRadio2" name="customRadio"
+                                   className="custom-control-input"/>
                             <label className="custom-control-label myText" htmlFor="customRadio2">Only Dec</label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="both" id="customRadio3" name="customRadio" className="custom-control-input" defaultChecked/>
+                            <input type="radio" value="both" id="customRadio3" name="customRadio"
+                                   className="custom-control-input" defaultChecked/>
                             <label className="custom-control-label myText" htmlFor="customRadio3">Both</label>
                         </div>
                     </div>
