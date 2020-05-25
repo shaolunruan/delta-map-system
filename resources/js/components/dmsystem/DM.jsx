@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as dm from '../../libs/guans-deltamap/deltamap.min.js'
 import axios from "axios";
 
-import {initChartTop, optionChartTop} from '../../functions/chartTop'
+import {initChartTop, getOptionChartTop} from '../../functions/chartTop'
 
 class DM extends Component{
     constructor(props) {
@@ -14,6 +14,7 @@ class DM extends Component{
             appendValue: '',
             display: 'both',
 
+            initData:[],
             viewData: []
         };
 
@@ -48,7 +49,7 @@ class DM extends Component{
     }
 
     handleSubmit(event) {
-        initChartTop('topChart',optionChartTop)
+        initChartTop('topChart',getOptionChartTop(this.state.viewData),this.state.viewData)
         event.preventDefault();
     }
 
@@ -56,34 +57,39 @@ class DM extends Component{
         axios.get('/api/ini')
             .then(res=>{
                 this.setState({
-                    viewData: res.data.data
+                    initData: res.data.data,
+                    viewData: dm.varia(res.data.data)
                 })
+
+                // optionChartTop = update_optionChartTop
+                // console.log(optionChartTop)
+
             })
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     console.log(!this.state.selectPlot == 'Plot-#'?typeof this.state.viewData[0][this.state.selectPlot]:'')
+    //     console.log(!this.state.selectPlot == 'Plot-#'?typeof this.state.initData[0][this.state.selectPlot]:'')
     // }
 
     render() {
         /*条件渲染表头*/
         let th;
-        if (this.state.viewData.length === 0) {
+        if (this.state.initData.length === 0) {
             th = <th>#</th>
         } else {
-            th = dm.getFields(this.state.viewData).map((d, i) => {
+            th = dm.getFields(this.state.initData).map((d, i) => {
                 return <th scope="col" key={i}>{d}</th>
             })
         }
 
         /*条件渲染表格*/
         let tr;
-        if (this.state.viewData.length === 0) {
+        if (this.state.initData.length === 0) {
             tr = <tr>
                 <th>#</th>
             </tr>
         } else {
-            tr = this.state.viewData.map((tr, i) => {
+            tr = this.state.initData.map((tr, i) => {
                 return (
                     <tr key={i}>
                         {Object.values(tr).map((d, j) => {
@@ -106,10 +112,10 @@ class DM extends Component{
 
         /*条件渲染select plot*/
         let selection;
-        if (this.state.viewData.length === 0) {
+        if (this.state.initData.length === 0) {
             selection = <option value="">Data parsing error!</option>
         } else {
-            selection = dm.getAddFields(this.state.viewData).map((d, i) => {
+            selection = dm.getAddFields(this.state.initData).map((d, i) => {
                 return <option key={i}>{d}</option>
             })
         }
@@ -119,7 +125,7 @@ class DM extends Component{
         if(this.state.selectPlot !== 'Highlight Field'){
             type = <span
             style={{'color': "#74e1f7",'fontSize':'0.9em'}}
-            >{typeof this.state.viewData[0][this.state.selectPlot]}</span>
+            >{typeof this.state.initData[0][this.state.selectPlot]}</span>
         }else{
             type = null
         }
@@ -212,7 +218,7 @@ class DM extends Component{
                         {/*<iframe src="/iframe" frameBorder="0" width='960px' height='600px'>*/}
                         {/*    <p>您的浏览器不支持  iframe 标签。</p>*/}
                         {/*</iframe>*/}
-                        <button>数据</button>
+                        <button>更新</button>
                     </div>
 
 

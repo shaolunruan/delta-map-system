@@ -7,7 +7,7 @@
     <script src="/js/library/bootstrap.min.js"></script>
     <style>
         .dmsystem {
-            height: 80vh;
+            height: 85vh;
             width: 95vw;
             border: solid 1px #d8d8d8;
             border-radius: .5em;
@@ -30,8 +30,9 @@
             border-top: solid 1px #d8d8d8;
         }
         .dmsystem .container-left>div:nth-child(1) {
-            flex-grow: 1;
+            /*flex-grow: 1;*/
             width: inherit;
+            height:200px
             /*background: #0f6674;*/
 
         }
