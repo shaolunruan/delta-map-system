@@ -48,7 +48,7 @@ let getOptionChartTop =(data=data)=> {
             },
             left:'center'
         },
-        color: ['#4737ff'],
+        color: ['#6c5ce7'],
         xAxis: {
             data: xAxisData,
             axisLabel: {

@@ -4,6 +4,7 @@ import * as dm from '../../libs/guans-deltamap/deltamap.min.js'
 import axios from "axios";
 
 import {initChartTop, getOptionChartTop} from '../../functions/chartTop'
+import {initChartBottom, getOptionChartBottom} from "../../functions/chartBottom";
 
 class DM extends Component{
     constructor(props) {
@@ -49,7 +50,8 @@ class DM extends Component{
     }
 
     handleSubmit(event) {
-        initChartTop('topChart',getOptionChartTop(this.state.viewData),this.state.viewData)
+        initChartTop('topChart', getOptionChartTop(this.state.viewData), this.state.viewData);
+        initChartBottom('bottomChart',getOptionChartBottom(this.state.initData),this.state.initData);
         event.preventDefault();
     }
 
@@ -208,7 +210,7 @@ class DM extends Component{
                 </div>
 
                 {/*{{--右侧的dm视图和下方的统计--}}*/}
-                <div className="bg-danger container-right flex-grow-1 d-flex flex-column">
+                <div className="container-right flex-grow-1 d-flex flex-column">
 
 
                     {/*{{-- dm视图--}}*/}
@@ -223,9 +225,7 @@ class DM extends Component{
 
 
                     {/*{{-- 数据统计视图--}}*/}
-                    <div className="bg-secondary chart flex-grow-1">
-                        bar-chart
-                    </div>
+                    <div className="chart flex-grow-1" id='bottomChart'></div>
 
                 </div>
             </div>
