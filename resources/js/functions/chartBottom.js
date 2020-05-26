@@ -22,7 +22,6 @@ function initChartBottom(domId,option,data){
     });
 }
 
-/*这是对topChart的初始值设置，之后在组件加载完毕请求数据之后，会重新设置option的值*/
 let getOptionChartBottom =(data=data)=> {
     let xAxisData = data.reduce((prev,cur)=>{
         prev.push(cur.name);

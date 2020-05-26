@@ -1,4 +1,7 @@
 import echarts from 'echarts';
+import * as dm from '../libs/guans-deltamap/deltamap.min.js';
+import * as d3 from 'd3';
+
 
 function initChartTop(domId,option,data){
     let topChart = echarts.init(document.getElementById(domId))
@@ -25,8 +28,17 @@ let data = {
     link:[]
 }
 
+
 /*这是对topChart的初始值设置，之后在组件加载完毕请求数据之后，会重新设置option的值*/
-let getOptionChartTop =(data=data)=> {
+
+/*这是对topChart的初始值设置，之后在组件加载完毕请求数据之后，会重新设置option的值*/
+/*
+* 自动识别第三个参数的值，
+* 不填，默认没有add属性，渲染为统一颜色
+* 为boolean值，渲染成 0 1 颜色
+* 为Number，渲染成渐变颜色
+* */
+let getOptionChartTop =(data=data,add=false)=> {
     let xAxisData = data.link.reduce((prev,cur)=>{
         prev.push(cur.name);
         return prev;
@@ -36,6 +48,15 @@ let getOptionChartTop =(data=data)=> {
         prev.push(cur.delta);
         return prev;
     },[])
+
+    const colorBoolean = ['#b2bec3','#2d3436']
+
+    const colorNumber = d3.scaleSequential(d3.interpolateLab('#8acdff', '#1B9CFC'))
+        .domain(d3.extent(data.link.reduce((prev,cur)=>{
+            prev.push(cur[add])
+            return prev
+        },[])));
+
 
     return {
         title: {
@@ -48,6 +69,7 @@ let getOptionChartTop =(data=data)=> {
             },
             left:'center'
         },
+        //默认bar的颜色
         color: ['#6c5ce7'],
         xAxis: {
             data: xAxisData,
@@ -96,9 +118,29 @@ let getOptionChartTop =(data=data)=> {
         },
         series: [
             {
-            data: yAxisData,
-            type: 'bar'
-        }],
+                data: yAxisData,
+                type: 'bar',
+                /*判断顺序：有无add，是否是boolean值，else*/
+                itemStyle:!add?null:(typeof data.link[0][add] === 'boolean'?
+                        {
+                            normal: {
+                                //每根柱子颜色设置
+                                color: function(params) {
+                                    return data.link[params.dataIndex][add]?colorBoolean[1]:colorBoolean[0];
+                                }
+                            }
+                        }
+                        :
+                        {
+                            normal: {
+                                color:function(params){
+                                    return colorNumber(data.link[params.dataIndex][add]);
+                                }
+                            }
+                        }
+                )
+            }
+        ],
         grid: {
             x: 30,
             y: 20,
