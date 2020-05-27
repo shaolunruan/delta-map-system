@@ -5,18 +5,21 @@ import axios from "axios";
 
 import {initChartTop, getOptionChartTop} from '../../functions/chartTop'
 import {initChartBottom, getOptionChartBottom} from "../../functions/chartBottom";
+import initChartDM from "../../functions/chartDM";
 
-class DM extends Component{
+export default class DM extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            selectPlot: 'Highlight Field',
+            selectPlot: '',
             filterAlgo: 'number',
             appendValue: '',
             display: 'both',
 
+            hover:{},
+
             initData:[],
-            viewData: []
+            viewData: [],
         };
 
         this.selectPlotHandle = this.selectPlotHandle.bind(this)
@@ -50,9 +53,23 @@ class DM extends Component{
     }
 
     handleSubmit(event) {
-        initChartTop('topChart', getOptionChartTop(this.state.viewData), this.state.viewData);
-        initChartBottom('bottomChart',getOptionChartBottom(this.state.initData),this.state.initData);
-        event.preventDefault();
+        let self = this
+        initChartTop('topChart', getOptionChartTop(this.state.viewData,this.state.selectPlot), this.state.viewData);
+        initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
+        this.state.selectPlot === '' ?
+            initChartDM('dm-svg', this.state.viewData) :
+            initChartDM('dm-svg', this.state.viewData, this.state.selectPlot);
+
+        links.on('mouseover',function(d){
+            self.setState({
+                    hover:{
+                    name:d[0].name,
+                    v1:d[0].from,
+                    v2:d[0].to,
+                    delta:d[0].delta
+                }
+            })
+        })
     }
 
     componentDidMount() {
@@ -67,6 +84,7 @@ class DM extends Component{
                 // console.log(optionChartTop)
 
             })
+
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -124,12 +142,12 @@ class DM extends Component{
 
         /*条件渲染display名称的类型*/
         let type;
-        if(this.state.selectPlot !== 'Highlight Field'){
+        if(this.state.selectPlot.length === 0){
+            type = null
+        }else{
             type = <span
             style={{'color': "#74e1f7",'fontSize':'0.9em'}}
             >{typeof this.state.initData[0][this.state.selectPlot]}</span>
-        }else{
-            type = null
         }
 
         return (
@@ -214,13 +232,39 @@ class DM extends Component{
 
 
                     {/*{{-- dm视图--}}*/}
-                    <div className="bg-info dm">
-                        dm-chart
-                        i'm {this.props.date}
-                        {/*<iframe src="/iframe" frameBorder="0" width='960px' height='600px'>*/}
-                        {/*    <p>您的浏览器不支持  iframe 标签。</p>*/}
-                        {/*</iframe>*/}
-                        <button>更新</button>
+                    <div className="dm">
+                        <svg id="dm-svg"></svg>
+                        {/*dm图右侧的参数展示区域*/}
+                        <div className="right-dm pull-right d-flex flex-column">
+                            <div className="bg-dark detail">
+                                <table className="table table-sm table-dark table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <td className={'col-'} style={{textAlign:'center'}}>Name</td>
+                                        <td style={{textAlign:'center'}}>{this.state.hover.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{textAlign:'center'}}>V-1</td>
+                                        <td style={{textAlign:'center'}}>{this.state.hover.v1}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{textAlign:'center'}}>V-2</td>
+                                        <td style={{textAlign:'center'}}>{this.state.hover.v2}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style={{textAlign:'center'}}>delta</th>
+                                        <td style={{textAlign:'center'}}>{this.state.hover.delta}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="bg-dark  sensitivity-stats">
+                                <div className='sensitivity-stats-text'>Counter</div>
+                                <div className="counter pull-right display-2" id={'counterid'}></div>
+                            </div>
+                            <div className="bg-primary counter flex-grow-1"></div>
+                            <div className="intersection"></div>
+                        </div>
                     </div>
 
 
@@ -232,8 +276,6 @@ class DM extends Component{
         );
     }
 }
-
-export default DM;
 
 if (document.getElementById('system')) {
     ReactDOM.render(<DM/>, document.getElementById('system'));

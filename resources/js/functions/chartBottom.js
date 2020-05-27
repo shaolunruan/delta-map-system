@@ -2,6 +2,8 @@ import echarts from 'echarts';
 
 function initChartBottom(domId,option,data){
     let bottomChart = echarts.init(document.getElementById(domId))
+    /*刷新重置view，使之有重新刷新的效果*/
+    bottomChart.clear()
     bottomChart.setOption(option);
 
 

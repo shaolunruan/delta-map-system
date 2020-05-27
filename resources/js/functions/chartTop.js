@@ -1,11 +1,13 @@
 import echarts from 'echarts';
-import * as dm from '../libs/guans-deltamap/deltamap.min.js';
 import * as d3 from 'd3';
 
 
 function initChartTop(domId,option,data){
     let topChart = echarts.init(document.getElementById(domId))
+    /*刷新重置view，使之有重新刷新的效果*/
+    topChart.clear()
     topChart.setOption(option)
+
 
     // Enable data zoom when user click bar.
     let zoomSize = 6;
@@ -51,7 +53,7 @@ let getOptionChartTop =(data=data,add=false)=> {
 
     const colorBoolean = ['#b2bec3','#2d3436']
 
-    const colorNumber = d3.scaleSequential(d3.interpolateLab('#8acdff', '#1B9CFC'))
+    const colorNumber = d3.scaleSequential(d3.interpolateLab('#d9eaf7', '#1B9CFC'))
         .domain(d3.extent(data.link.reduce((prev,cur)=>{
             prev.push(cur[add])
             return prev

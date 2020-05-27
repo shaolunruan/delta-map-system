@@ -18,16 +18,19 @@
             border-right: solid 1px #d8d8d8;
         }
         .container-right {
-            padding: 15px;
+            padding: 8px;
         }
         .container-left div{
             margin: 2px
         }
         .dm{
+            position: relative;
             min-height: 60vh;
         }
         .chart{
             border-top: solid 1px #d8d8d8;
+            /*display: none;*/
+            padding-top: 5px;
         }
         .dmsystem .container-left>div:nth-child(1) {
             /*flex-grow: 1;*/
@@ -62,8 +65,8 @@
             font-size: .8em;
         }
         .dmsystem .container-left button {
-            background-color: #4737ff;
-            border-color: #4737ff;
+            background-color: #766cf5;
+            /*border-color: #8278f7;*/
             color: #fff;
             border-radius: .5em;
             height: 38px;
@@ -77,6 +80,41 @@
         }
         .dmsystem .container-left .custom-control-inline{
             margin-right: 9px;
+        }
+        .dmsystem .container-right .right-dm {
+            height: 100%;
+            width: 250px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .dmsystem .container-right .right-dm>.detail {
+            width: 100%;
+            min-height: 0;
+        }
+        .dmsystem .container-right .right-dm>.counter {
+            width: 100%;
+        }
+        .dmsystem .container-right .right-dm>.sensitivity-stats{
+            width: 100%;
+            height: 30%;
+            position: relative;
+        }
+        .dmsystem .container-right .right-dm>.sensitivity-stats>.sensitivity-stats-text {
+            color: #fff;
+            padding-left: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1em;
+        }
+        .dmsystem .container-right .right-dm>.sensitivity-stats>.counter{
+            color: #fff;
+            /*padding:0 20px 0 10px;*/
+            /*font-family: 'Nunito', sans-serif;*/
+            /*font-size: 10em;*/
+            position: absolute;
+            right: 50px;
+            top: 10px;
+
         }
     </style>
     <div>
