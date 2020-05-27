@@ -91,29 +91,35 @@
         .dmsystem .container-right .right-dm>.detail {
             width: 100%;
             min-height: 0;
+            background-color: #f8f8f8;
         }
-        .dmsystem .container-right .right-dm>.counter {
+        .dmsystem .container-right .right-dm>.snCounter {
             width: 100%;
+            background-color: #f8f8f8;
         }
         .dmsystem .container-right .right-dm>.sensitivity-stats{
             width: 100%;
-            height: 30%;
+            height: 25.5%;
             position: relative;
+            background-color: #f8f8f8;
+            border-bottom: solid 3px #fff;
         }
         .dmsystem .container-right .right-dm>.sensitivity-stats>.sensitivity-stats-text {
-            color: #fff;
+            position: absolute;
+            top: -5px;
+            color: #797979;
             padding-left: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 1em;
         }
         .dmsystem .container-right .right-dm>.sensitivity-stats>.counter{
-            color: #fff;
+            color: #4e4e4e;
             /*padding:0 20px 0 10px;*/
             /*font-family: 'Nunito', sans-serif;*/
             /*font-size: 10em;*/
             position: absolute;
-            right: 50px;
-            top: 10px;
+            right: 80px;
+            top: -5px;
 
         }
     </style>

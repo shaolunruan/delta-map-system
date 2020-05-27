@@ -74,21 +74,21 @@ let vis = (svg, data, c=[], r=[], add=false)=>{
 
         if(acs.length>2&&dec.length>2){
             //TODO:定制无附加属性的颜色映射
-            colorAsc = d3.scaleSequential(d3.interpolateLab("white", "green"))
+            colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
                 .domain(d3.extent(acs));
-            colorDec = d3.scaleSequential(d3.interpolateLab("white", "red"))
+            colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
                 .domain(d3.extent(dec));
         }else if(acs.length>1&&dec.length===2){
-            colorAsc = d3.scaleSequential(d3.interpolateLab("white", "green"))
+            colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
                 .domain(d3.extent(acs));
             colorDec=function(){
-                return 'red';
+                return '#d72a13';
             };
         }else if(dec.length>1&&acs.length===2){
             colorAsc = ()=>{
-                return 'green';
+                return '#278f39';
             };
-            colorDec = d3.scaleSequential(d3.interpolateLab("white", "red"))
+            colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
                 .domain(d3.extent(dec));
         }
     }
@@ -366,6 +366,9 @@ let vis = (svg, data, c=[], r=[], add=false)=>{
                 radius: innerRadius
             }]
     })
+    /*接受highlight ego的数组*/
+    // let snArr = []
+
     let links = svg.append('g')
         .selectAll('.link')
         .data(dataForRadialLine)
@@ -378,7 +381,8 @@ let vis = (svg, data, c=[], r=[], add=false)=>{
         })
         .each(d=>{
             if(Math.sqrt(Math.pow(d[0].radius,2)+(Math.pow(d[1].radius,2))-2*d[0].radius*d[1].radius*Math.cos(d[0].angle-d[1].angle))>tangent){
-                intersectCounter++
+                intersectCounter++;
+                snArr.push(d)
             }
         })
         .on('mouseover', mouseover)

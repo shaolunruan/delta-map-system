@@ -2,7 +2,8 @@ import * as dm from '../libs/guans-deltamap/deltamap.min.js';
 import { vis } from '../libs/guans-deltamap/vis'
 import * as d3 from 'd3';
 
-import updateInfo from "./parts/updateInfo";
+// import updateInfo from "./parts/updateInfo";
+import { updateSnCounter, getOptionSnCounter } from "./parts/updateSen";
 
 export default function initChartDM(domId = null, data = null,add=false,self) {
     let svg = d3.select(`#${domId}`)
@@ -22,13 +23,16 @@ export default function initChartDM(domId = null, data = null,add=false,self) {
     let yr = 0.30*yo;
     let r = [xr,yr]
 
+    /*设置highlight ego的数组，在vis中设置，再传入updateSnCounter()*/
+    let snArr = [];
+    window.snArr = snArr;
+
     /*draw the plot*/
     vis(svg, data, o, r, add)
 
-
     /*
-    更新右侧的示数组件
+    更新右侧的第三个示数组件
     * */
-    updateInfo('detail')
+    updateSnCounter('snCounter', getOptionSnCounter(snArr))
 };
 

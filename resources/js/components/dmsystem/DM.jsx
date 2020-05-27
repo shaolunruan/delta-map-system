@@ -236,11 +236,11 @@ export default class DM extends Component{
                         <svg id="dm-svg"></svg>
                         {/*dm图右侧的参数展示区域*/}
                         <div className="right-dm pull-right d-flex flex-column">
-                            <div className="bg-dark detail">
-                                <table className="table table-sm table-dark table-bordered">
+                            <div className="detail">
+                                <table className="table table-sm table-secondary table-bordered">
                                     <tbody>
                                     <tr>
-                                        <td className={'col-'} style={{textAlign:'center'}}>Name</td>
+                                        <td style={{textAlign:'center',width:'100px'}}>Name</td>
                                         <td style={{textAlign:'center'}}>{this.state.hover.name}</td>
                                     </tr>
                                     <tr>
@@ -258,11 +258,11 @@ export default class DM extends Component{
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="bg-dark  sensitivity-stats">
+                            <div className="sensitivity-stats">
                                 <div className='sensitivity-stats-text'>Counter</div>
                                 <div className="counter pull-right display-2" id={'counterid'}></div>
                             </div>
-                            <div className="bg-primary counter flex-grow-1"></div>
+                            <div className="snCounter flex-grow-1" id={'snCounter'}></div>
                             <div className="intersection"></div>
                         </div>
                     </div>
