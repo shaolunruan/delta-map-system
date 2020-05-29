@@ -12,8 +12,8 @@
     <div class="left">
         <div style="padding: 10px;">
 
-            <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select"
-                                                                          aria-hidden="true"></i></a>
+                <a href="https://github.com/shaolun-Ryan/delta-map-system"><i class="icon fa fa-github select"
+                                                                              aria-hidden="true"></i></a>
 
             <a href="/gallery"><span class="gallery select select-text">Gallery</span></a>
             <a href="#about"><span class="about select select-text">About</span></a>

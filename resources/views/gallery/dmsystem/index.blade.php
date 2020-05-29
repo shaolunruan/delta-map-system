@@ -122,6 +122,19 @@
             top: -5px;
 
         }
+        .dm>.switch {
+            position: absolute;
+            top:0;
+            right: 260px;
+        }
+        .dm>#loading {
+            display: block;
+            font-size: 17em;
+            color: #f0f0f0;
+            position: absolute;
+            left: 250px;
+            top: 50px;
+        }
     </style>
     <div>
         {{--所有的视图组件--}}

@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 function initChartTop(domId,option,data){
     let topChart = echarts.init(document.getElementById(domId))
     /*刷新重置view，使之有重新刷新的效果*/
-    topChart.clear()
+    topChart.clear();
     topChart.setOption(option)
 
 

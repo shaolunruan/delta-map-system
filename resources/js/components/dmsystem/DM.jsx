@@ -20,6 +20,10 @@ export default class DM extends Component{
 
             initData:[],
             viewData: [],
+
+            flagUpdate:false,
+            flagAll:false,
+            flagOnlyHL:false,
         };
 
         this.selectPlotHandle = this.selectPlotHandle.bind(this)
@@ -27,6 +31,8 @@ export default class DM extends Component{
         this.appendValueHandle = this.appendValueHandle.bind(this)
         this.displayHandle = this.displayHandle.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleAll = this.handleAll.bind(this);
+        this.handleOnlyHL = this.handleOnlyHL.bind(this)
 
     }
 
@@ -54,22 +60,65 @@ export default class DM extends Component{
 
     handleSubmit(event) {
         let self = this
-        initChartTop('topChart', getOptionChartTop(this.state.viewData,this.state.selectPlot), this.state.viewData);
+        initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
         initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
         this.state.selectPlot === '' ?
             initChartDM('dm-svg', this.state.viewData) :
             initChartDM('dm-svg', this.state.viewData, this.state.selectPlot);
 
-        links.on('mouseover',function(d){
+        links.on('mouseover', function (d) {
             self.setState({
-                    hover:{
-                    name:d[0].name,
-                    v1:d[0].from,
-                    v2:d[0].to,
-                    delta:d[0].delta
+                hover: {
+                    name: d[0].name,
+                    v1: d[0].from,
+                    v2: d[0].to,
+                    delta: d[0].delta
                 }
             })
         })
+
+        /*
+        * 按下update DM之后触发的事件
+        * */
+        this.setState({
+            flagUpdate: true,
+            flagAll: true
+        })
+        //TODO:不知道为什么这样的样式更改并没有生效
+        document.getElementById('switchOption1').style.display = 'none';
+        /*下面的代码生效了*/
+        // document.getElementById('loading').style.display = 'none';
+        $("#loading").fadeOut(750);
+    }
+
+    handleAll(){
+        if(!this.state.flagUpdate){
+            alert('Please update the deltamap first.')
+        }
+        if(this.state.flagOnlyHL&&!this.state.flagAll){
+            console.log('我是全部')
+
+            this.setState({
+                flagAll : true,
+                flagOnlyHL : false,
+            })
+
+        }
+    }
+
+    handleOnlyHL(){
+        if(!this.state.flagUpdate){
+            alert('Please update the deltamap first.')
+        }
+        if(!this.state.flagOnlyHL&&this.state.flagAll){
+            console.log('我是部分')
+
+            this.setState({
+                flagOnlyHL : true,
+                flagAll : false,
+            })
+        }
+
     }
 
     componentDidMount() {
@@ -233,27 +282,40 @@ export default class DM extends Component{
 
                     {/*{{-- dm视图--}}*/}
                     <div className="dm">
+
+                        <i className="fa fa-lock" id={'loading'} aria-hidden="true"></i>
                         <svg id="dm-svg"></svg>
+
+                        {/*切换显示全部ego还是highlighted ego*/}
+                        <div className="switch btn-group btn-group-toggle" data-toggle="buttons">
+                            <label className="btn btn-light active">
+                                <input type="radio" name="options" id={"switchOption1"} onClick={this.handleAll} /> All
+                            </label>
+                            <label className="btn btn-light">
+                                <input type="radio" name="options" id={"switchOption2"} onClick={this.handleOnlyHL}/> Only HL
+                            </label>
+                        </div>
+
                         {/*dm图右侧的参数展示区域*/}
                         <div className="right-dm pull-right d-flex flex-column">
                             <div className="detail">
                                 <table className="table table-sm table-secondary table-bordered">
                                     <tbody>
                                     <tr>
-                                        <td style={{textAlign:'center',width:'100px'}}>Name</td>
-                                        <td style={{textAlign:'center'}}>{this.state.hover.name}</td>
+                                        <td style={{textAlign: 'center', width: '100px'}}>Name</td>
+                                        <td style={{textAlign: 'center'}}>{this.state.hover.name}</td>
                                     </tr>
                                     <tr>
-                                        <td style={{textAlign:'center'}}>V-1</td>
-                                        <td style={{textAlign:'center'}}>{this.state.hover.v1}</td>
+                                        <td style={{textAlign: 'center'}}>V-1</td>
+                                        <td style={{textAlign: 'center'}}>{this.state.hover.v1}</td>
                                     </tr>
                                     <tr>
-                                        <td style={{textAlign:'center'}}>V-2</td>
-                                        <td style={{textAlign:'center'}}>{this.state.hover.v2}</td>
+                                        <td style={{textAlign: 'center'}}>V-2</td>
+                                        <td style={{textAlign: 'center'}}>{this.state.hover.v2}</td>
                                     </tr>
                                     <tr>
-                                        <th style={{textAlign:'center'}}>delta</th>
-                                        <td style={{textAlign:'center'}}>{this.state.hover.delta}</td>
+                                        <th style={{textAlign: 'center'}}>delta</th>
+                                        <td style={{textAlign: 'center'}}>{this.state.hover.delta}</td>
                                     </tr>
                                     </tbody>
                                 </table>
