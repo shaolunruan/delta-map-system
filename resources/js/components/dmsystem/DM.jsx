@@ -66,15 +66,18 @@ export default class DM extends Component{
             initChartDM('dm-svg', this.state.viewData) :
             initChartDM('dm-svg', this.state.viewData, this.state.selectPlot);
 
-        links.on('mouseover', function (d) {
-            self.setState({
-                hover: {
-                    name: d[0].name,
-                    v1: d[0].from,
-                    v2: d[0].to,
-                    delta: d[0].delta
-                }
-            })
+        /*
+        * 处理暴露于全局的变量links，link_d，将mouseover的值在setState中设置，以便于在panel中显示
+        * */
+        this.setStateHover();
+
+        /*
+        * 初始化flag
+        * */
+        this.setState({
+            flagUpdate: false,
+            flagAll: false,
+            flagOnlyHL:false
         })
 
         /*
@@ -88,7 +91,7 @@ export default class DM extends Component{
         document.getElementById('switchOption1').style.display = 'none';
         /*下面的代码生效了*/
         // document.getElementById('loading').style.display = 'none';
-        $("#loading").fadeOut(750);
+        $("#loading").fadeOut();
     }
 
     handleAll(){
@@ -96,7 +99,8 @@ export default class DM extends Component{
             alert('Please update the deltamap first.')
         }
         if(this.state.flagOnlyHL&&!this.state.flagAll){
-            console.log('我是全部')
+            document.getElementById('showAll').style.display = 'block';
+            document.getElementById('showHL').style.display = 'none';
 
             this.setState({
                 flagAll : true,
@@ -111,7 +115,8 @@ export default class DM extends Component{
             alert('Please update the deltamap first.')
         }
         if(!this.state.flagOnlyHL&&this.state.flagAll){
-            console.log('我是部分')
+            document.getElementById('showAll').style.display = 'none';
+            document.getElementById('showHL').style.display = 'block';
 
             this.setState({
                 flagOnlyHL : true,
@@ -121,6 +126,31 @@ export default class DM extends Component{
 
     }
 
+    setStateHover(){
+        let self = this;
+
+        links.on('mouseover', function (d) {
+            self.setState({
+                hover: {
+                    name: d[0].name,
+                    v1: d[0].from,
+                    v2: d[0].to,
+                    delta: d[0].delta
+                }
+            })
+        })
+
+        link_d.on('mouseover', function (d) {
+            self.setState({
+                hover: {
+                    name: d[0].name,
+                    v1: d[0].from,
+                    v2: d[0].to,
+                    delta: d[0].delta
+                }
+            })
+        })
+    }
     componentDidMount() {
         axios.get('/api/ini')
             .then(res=>{

@@ -1,5 +1,6 @@
 import * as dm from '../libs/guans-deltamap/deltamap.min.js';
 import { vis } from '../libs/guans-deltamap/vis'
+import {vis_for_HL} from "../libs/guans-deltamap/vis_for_HL";
 import * as d3 from 'd3';
 
 // import updateInfo from "./parts/updateInfo";
@@ -29,6 +30,9 @@ export default function initChartDM(domId = null, data = null,add=false,self) {
 
     /*draw the plot*/
     vis(svg, data, o, r, add)
+
+    /*Add another plot to show HL ego instead of all ego*/
+    vis_for_HL(svg, data, o, r, add)
 
     /*
     更新右侧的第三个示数组件

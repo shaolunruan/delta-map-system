@@ -135,6 +135,9 @@
             left: 250px;
             top: 50px;
         }
+        .dm>svg>#showHL .HL>path:hover{
+            stroke-width: 8px;
+        }
     </style>
     <div>
         {{--所有的视图组件--}}

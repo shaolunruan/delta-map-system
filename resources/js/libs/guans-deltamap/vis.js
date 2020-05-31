@@ -117,6 +117,7 @@ let vis = (svg, data, c=[], r=[], add=false)=>{
 
     /* 创建包含dm的g，并且移动到指定位置 */
     svg = svg.append('g')
+        .attr('id','showAll')
         .attr('transform', `translate(${c[0]},${c[1]})`)
 
     //定义环形的映射比例尺
