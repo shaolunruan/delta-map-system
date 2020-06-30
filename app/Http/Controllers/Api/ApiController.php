@@ -150,18 +150,19 @@ class ApiController extends CommonController
     {
         $mip1718 = new Csv('../storage/dataFile/nba_mip_reb/mip1718.csv');
         $mip1819 = new Csv('../storage/dataFile/nba_mip_reb/mip1819.csv');
-        for($i = 0,$mip = [];$i<100;$i++){
-            if($mip1819->data[$i]['GP']>10){
-                if($mip1718->data[$i]['rank'] !== '#'){
+        for($i = 0,$mip = [];$i<100;$i++) {
+            if ($mip1819->data[$i]['rank'] !== '#') {
+                if ($mip1718->data[$i]['rank'] !== '#') {
                     $ele = [
-                        'player'=>$mip1819->data[$i]['PLAYER'],
-                        'rank18'=>$mip1718->data[$i]['rank'],
-                        'rank19'=>$mip1819->data[$i]['rank']
+                        'player' => $mip1819->data[$i]['PLAYER'],
+                        'reb18' => $mip1718->data[$i]['rank'],
+                        'reb19' => $mip1819->data[$i]['rank']
                     ];
                     array_push($mip, $ele);
                 }
             }
         }
+
         return $mip;
     }
 
@@ -170,12 +171,12 @@ class ApiController extends CommonController
         $mip1718 = new Csv('../storage/dataFile/nba_mip_ast/mip1718.csv');
         $mip1819 = new Csv('../storage/dataFile/nba_mip_ast/mip1819.csv');
         for($i = 0,$mip = [];$i<100;$i++){
-            if($mip1819->data[$i]['GP']>10){
-                if($mip1718->data[$i]['rank'] !== '#'){
+            if($mip1819->data[$i]['rank'] !== '#') {
+                if ($mip1718->data[$i]['rank'] !== '#') {
                     $ele = [
-                        'player'=>$mip1819->data[$i]['PLAYER'],
-                        'rank18'=>$mip1718->data[$i]['rank'],
-                        'rank19'=>$mip1819->data[$i]['rank']
+                        'player' => $mip1819->data[$i]['PLAYER'],
+                        'ast18' => $mip1718->data[$i]['rank'],
+                        'ast19' => $mip1819->data[$i]['rank']
                     ];
                     array_push($mip, $ele);
                 }
@@ -189,34 +190,30 @@ class ApiController extends CommonController
         $mip1718 = new Csv('../storage/dataFile/nba_mip_FG/mip1718.csv');
         $mip1819 = new Csv('../storage/dataFile/nba_mip_FG/mip1819.csv');
         for($i = 0,$mip = [];$i<100;$i++){
-            if($mip1819->data[$i]['GP']>10){
-                if($mip1718->data[$i]['rank'] !== '#'){
-                    $ele = [
-                        'player'=>$mip1819->data[$i]['PLAYER'],
-                        'rank18'=>$mip1718->data[$i]['rank'],
-                        'rank19'=>$mip1819->data[$i]['rank']
-                    ];
-                    array_push($mip, $ele);
-                }
+            if($mip1718->data[$i]['rank'] !== '#'){
+                $ele = [
+                    'player'=>$mip1819->data[$i]['PLAYER'],
+                    'FG18'=>$mip1718->data[$i]['rank'],
+                    'FG19'=>$mip1819->data[$i]['rank']
+                ];
+                array_push($mip, $ele);
             }
         }
         return $mip;
     }
 
-    public function nba_mip_PosNeg()
+    public function nba_mip_min()
     {
-        $mip1718 = new Csv('../storage/dataFile/nba_mip_PosNeg/mip1718.csv');
-        $mip1819 = new Csv('../storage/dataFile/nba_mip_PosNeg/mip1819.csv');
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_min/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_min/mip1819.csv');
         for($i = 0,$mip = [];$i<100;$i++){
-            if($mip1819->data[$i]['GP']>10){
-                if($mip1718->data[$i]['rank'] !== '#'){
-                    $ele = [
-                        'player'=>$mip1819->data[$i]['PLAYER'],
-                        'rank18'=>$mip1718->data[$i]['rank'],
-                        'rank19'=>$mip1819->data[$i]['rank']
-                    ];
-                    array_push($mip, $ele);
-                }
+            if($mip1718->data[$i]['rank'] !== '#'){
+                $ele = [
+                    'player'=>$mip1819->data[$i]['PLAYER'],
+                    'PN18'=>$mip1718->data[$i]['rank'],
+                    'PN19'=>$mip1819->data[$i]['rank']
+                ];
+                array_push($mip, $ele);
             }
         }
         return $mip;

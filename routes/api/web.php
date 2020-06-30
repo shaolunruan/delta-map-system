@@ -7,5 +7,5 @@ Route::group(['prefix'=>'api','namespace'=>'Api'], function (){
     Route::get('/nba_mip_reb', 'ApiController@nba_mip_reb');
     Route::get('/nba_mip_ast', 'ApiController@nba_mip_ast');
     Route::get('/nba_mip_FG', 'ApiController@nba_mip_FG');
-    Route::get('/nba_mip_PosNeg', 'ApiController@nba_mip_PosNeg');
+    Route::get('/nba_mip_min', 'ApiController@nba_mip_min');
 });
