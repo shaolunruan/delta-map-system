@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\CommonController;
-
+use ParseCsv\Csv;
+/*
+ * 去掉了1718赛季还没有进入联盟的球员
+ * 去掉了1819赛季上场次数小于10场的球员
+ * */
 
 class ApiController extends CommonController
 {
@@ -121,5 +125,100 @@ class ApiController extends CommonController
               ],
       ];
         return $this->response($data);
+    }
+
+    public function nba_mip_pts()
+    {
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_pts/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_pts/mip1819.csv');
+        for($i = 0,$mip = [];$i<100;$i++){
+            if($mip1819->data[$i]['GP']>10){
+                if($mip1718->data[$i]['rank'] !== '#'){
+                    $ele = [
+                        'player'=>$mip1819->data[$i]['PLAYER'],
+                        'rank18'=>$mip1718->data[$i]['rank'],
+                        'rank19'=>$mip1819->data[$i]['rank']
+                    ];
+                    array_push($mip, $ele);
+                }
+            }
+        }
+        return $mip;
+    }
+
+    public function nba_mip_reb()
+    {
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_reb/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_reb/mip1819.csv');
+        for($i = 0,$mip = [];$i<100;$i++){
+            if($mip1819->data[$i]['GP']>10){
+                if($mip1718->data[$i]['rank'] !== '#'){
+                    $ele = [
+                        'player'=>$mip1819->data[$i]['PLAYER'],
+                        'rank18'=>$mip1718->data[$i]['rank'],
+                        'rank19'=>$mip1819->data[$i]['rank']
+                    ];
+                    array_push($mip, $ele);
+                }
+            }
+        }
+        return $mip;
+    }
+
+    public function nba_mip_ast()
+    {
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_ast/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_ast/mip1819.csv');
+        for($i = 0,$mip = [];$i<100;$i++){
+            if($mip1819->data[$i]['GP']>10){
+                if($mip1718->data[$i]['rank'] !== '#'){
+                    $ele = [
+                        'player'=>$mip1819->data[$i]['PLAYER'],
+                        'rank18'=>$mip1718->data[$i]['rank'],
+                        'rank19'=>$mip1819->data[$i]['rank']
+                    ];
+                    array_push($mip, $ele);
+                }
+            }
+        }
+        return $mip;
+    }
+
+    public function nba_mip_FG()
+    {
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_FG/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_FG/mip1819.csv');
+        for($i = 0,$mip = [];$i<100;$i++){
+            if($mip1819->data[$i]['GP']>10){
+                if($mip1718->data[$i]['rank'] !== '#'){
+                    $ele = [
+                        'player'=>$mip1819->data[$i]['PLAYER'],
+                        'rank18'=>$mip1718->data[$i]['rank'],
+                        'rank19'=>$mip1819->data[$i]['rank']
+                    ];
+                    array_push($mip, $ele);
+                }
+            }
+        }
+        return $mip;
+    }
+
+    public function nba_mip_PosNeg()
+    {
+        $mip1718 = new Csv('../storage/dataFile/nba_mip_PosNeg/mip1718.csv');
+        $mip1819 = new Csv('../storage/dataFile/nba_mip_PosNeg/mip1819.csv');
+        for($i = 0,$mip = [];$i<100;$i++){
+            if($mip1819->data[$i]['GP']>10){
+                if($mip1718->data[$i]['rank'] !== '#'){
+                    $ele = [
+                        'player'=>$mip1819->data[$i]['PLAYER'],
+                        'rank18'=>$mip1718->data[$i]['rank'],
+                        'rank19'=>$mip1819->data[$i]['rank']
+                    ];
+                    array_push($mip, $ele);
+                }
+            }
+        }
+        return $mip;
     }
 }
