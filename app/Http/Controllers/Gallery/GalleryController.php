@@ -14,7 +14,14 @@ class GalleryController extends Controller
 
     public function dmsystem($id)
     {
-        return view('gallery.dmsystem.index');
+        return view('gallery.dmsystem.index')->with('id',$id);
+    }
+
+    /*
+     * 根据分类来filter数据集卡片
+     * */
+    public function category($cate){
+        return view('gallery.index.category')->with('cate',$cate);
     }
 
 }

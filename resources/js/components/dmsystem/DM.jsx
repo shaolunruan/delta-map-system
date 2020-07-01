@@ -152,7 +152,9 @@ export default class DM extends Component{
         })
     }
     componentDidMount() {
-        axios.get('/api/ini')
+        /*get id from laravel blade*/
+        let id = $('#system').attr("data-text");
+        axios.get(`/api/${id}`)
             .then(res=>{
                 this.setState({
                     initData: res.data.data,
@@ -370,5 +372,5 @@ export default class DM extends Component{
 }
 
 if (document.getElementById('system')) {
-    ReactDOM.render(<DM/>, document.getElementById('system'));
+    ReactDOM.render(<DM />, document.getElementById('system'));
 }

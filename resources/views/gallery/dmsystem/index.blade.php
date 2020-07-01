@@ -141,7 +141,7 @@
     </style>
     <div>
         {{--所有的视图组件--}}
-        <div id="system"></div>
+        <div id="system" data-text={{$id}}></div>
 
     </div>
     <script type="text/javascript" src="../js/app.js"></script>

@@ -30,19 +30,20 @@
 
 <div class="list-group col-2">
     <button type="button" class="list-group-item list-group-item-action">
-        Normal
+        <a href={{route('gallery.category',['cate'=>'normal'])}}>Normal</a>
         <span class="badge badge-primary badge-pill">3</span>
+
     </button>
     <button type="button" class="list-group-item list-group-item-action">
-        Clustering
+        <a href={{route('gallery.category',['cate'=>'clustering'])}}>Clustering</a>
         <span class="badge badge-primary badge-pill">1</span>
     </button>
     <button type="button" class="list-group-item list-group-item-action">
-        Analysis
+        <a href={{route('gallery.category',['cate'=>'analysis'])}}>Analysis</a>
         <span class="badge badge-primary badge-pill">1</span>
     </button>
     <button type="button" class="list-group-item list-group-item-action">
-        Quantitative
+        <a href={{route('gallery.category',['cate'=>'quantitative'])}}>Quantitative</a>
         <span class="badge badge-primary badge-pill">1</span>
     </button>
 </div>
@@ -55,7 +56,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>1])}}" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>1])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -63,15 +64,17 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>2])}}" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>2])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
             <img class="card-img-top" src="/static/mip.png" height="40%"  alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>3])}}" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">2018-19 NBA MIP</h5>
+                <p class="card-text">
+                    Analyse the 2018-19 NBA Most Improved Player selection via Delta Map System.
+                </p>
+                <a href="{{route('gallery.dmsystem',['id'=>'mip'])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -79,7 +82,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>4])}}" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>4])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -87,7 +90,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>5])}}" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>5])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
         <div class="card" style="width: 18rem">
@@ -95,7 +98,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route('gallery.dmsystem',['id'=>6])}}" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('gallery.dmsystem',['id'=>6])}}" class="btn btn-primary">Get Started</a>
             </div>
         </div>
     </div>
