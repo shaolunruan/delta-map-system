@@ -400,3 +400,5 @@ let playerMap = [
         color: '#e03a3e',
         team:'BKN'
     }]
+
+export {playerMap}

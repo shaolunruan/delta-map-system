@@ -12,8 +12,7 @@ To comvert formatted data into svg plot.`
 */
 import * as d3 from 'd3';
 import { select } from 'd3-selection'
-import '../../../../public/css/dmc.css'
-
+import {playerMap} from '../../presets/player_map_color'
 
 let getExtentFromOutput = (data)=>{
     let [min,max] = d3.extent(data.link.reduce((prev,cur)=>{
@@ -24,7 +23,7 @@ let getExtentFromOutput = (data)=>{
     return [min, max];
 };
 
-let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
+let vis_mip = (svg, data, c=[], r=[], add=false)=>{
     /*
     Customize error message.
     */
@@ -43,84 +42,83 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
         throw('Radius of dm is not defined. Expected Array [outerRadius, innerRadius].');
     }
 
-    // if(r[0]<=r[1]){
-    //     throw('Parsing error. Expected Array [outerRadius, innerRadius].');
-    // }
+    if(r[0]<=r[1]){
+        throw('Parsing error. Expected Array [outerRadius, innerRadius].');
+    }
 
     /* 创建add解析函数 */
     //实现两种颜色区域的渐变
-    let addColor, colorAsc, colorDec, acs, dec;
-    if(typeof data.link[0][add] == 'number'){
-        //TODO:定制渐变的颜色映射
-        addColor = d3.scaleSequential(d3.interpolateLab("#d9eaf7", "#1B9CFC"))
-            .domain(d3.extent(data.link.reduce((prev,cur)=>{
-                prev.push(cur[add])
-                return prev;
-            },[])));
-    }
-    if(!add){
-        acs = data.link.reduce((prev,cur)=>{
-            if(cur.delta>=0){
-                prev.push(cur.delta)
-                return prev;
-            }
-            return prev;
-        },[])
-        dec = data.link.reduce((prev,cur)=>{
-            if(cur.delta<0){
-                prev.push(cur.delta)
-                return prev;
-            }
-            return prev;
-        },[])
-
-        if(acs.length>2&&dec.length>2){
-            //TODO:定制无附加属性的颜色映射
-            colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
-                .domain(d3.extent(acs));
-            colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
-                .domain(d3.extent(dec));
-        }else if(acs.length>1&&dec.length===2){
-            colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
-                .domain(d3.extent(acs));
-            colorDec=function(){
-                return '#d72a13';
-            };
-        }else if(dec.length>1&&acs.length===2){
-            colorAsc = ()=>{
-                return '#278f39';
-            };
-            colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
-                .domain(d3.extent(dec));
-        }
-    }
-    function colorMap(d){
-        /* add参数没有指定时 */
-        if(!add){
-
-            return d.delta>=0? colorAsc(d.delta) : colorDec(d.delta);
-            /* add参数指定为数值型时 */
-            //TODO:定制add为布尔值时的颜色映射
-        }else if(typeof data.link[0][add] == 'boolean'){
-            return d.add == true?'#2d3436':'#b2bec3';
-            /* add参数指定为布尔型时 */
-        }else if(typeof data.link[0][add] == 'number'){
-            return addColor(d.add)
-        }
-    }
+    // let addColor, colorAsc, colorDec, acs, dec;
+    // if(typeof data.link[0][add] == 'number'){
+    //     //TODO:定制渐变的颜色映射
+    //     addColor = d3.scaleSequential(d3.interpolateLab("#d9eaf7", "#1B9CFC"))
+    //         .domain(d3.extent(data.link.reduce((prev,cur)=>{
+    //             prev.push(cur[add])
+    //             return prev;
+    //         },[])));
+    // }
+    // if(!add){
+    //     acs = data.link.reduce((prev,cur)=>{
+    //         if(cur.delta>=0){
+    //             prev.push(cur.delta)
+    //             return prev;
+    //         }
+    //         return prev;
+    //     },[])
+    //     dec = data.link.reduce((prev,cur)=>{
+    //         if(cur.delta<0){
+    //             prev.push(cur.delta)
+    //             return prev;
+    //         }
+    //         return prev;
+    //     },[])
+    //
+    //     if(acs.length>2&&dec.length>2){
+    //         //TODO:定制无附加属性的颜色映射
+    //         colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
+    //             .domain(d3.extent(acs));
+    //         colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
+    //             .domain(d3.extent(dec));
+    //     }else if(acs.length>1&&dec.length===2){
+    //         colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
+    //             .domain(d3.extent(acs));
+    //         colorDec=function(){
+    //             return '#d72a13';
+    //         };
+    //     }else if(dec.length>1&&acs.length===2){
+    //         colorAsc = ()=>{
+    //             return '#278f39';
+    //         };
+    //         colorDec = d3.scaleSequential(d3.interpolateLab("#fdb1a7", "#d72a13"))
+    //             .domain(d3.extent(dec));
+    //     }
+    // }
+    // function colorMap(d){
+    //     /* add参数没有指定时 */
+    //     if(!add){
+    //
+    //         return d.delta>=0? colorAsc(d.delta) : colorDec(d.delta);
+    //         /* add参数指定为数值型时 */
+    //         //TODO:定制add为布尔值时的颜色映射
+    //     }else if(typeof data.link[0][add] == 'boolean'){
+    //         return d.add == true?'#2d3436':'#b2bec3';
+    //         /* add参数指定为布尔型时 */
+    //     }else if(typeof data.link[0][add] == 'number'){
+    //         return addColor(d.add)
+    //     }
+    // }
 
 
     const outerRadius = r[0], innerRadius = r[1];
     const max = getExtentFromOutput(data)[1], min = getExtentFromOutput(data)[0]
 
-    // svg
-    //     .selectAll('*')
-    //     .remove()
+    svg
+        .selectAll('*')
+        .remove()
 
     /* 创建包含dm的g，并且移动到指定位置 */
     svg = svg.append('g')
-        .attr('id','showHL')
-        .attr('style','display:none')
+        .attr('id','showAll')
         .attr('transform', `translate(${c[0]},${c[1]})`)
 
     //定义环形的映射比例尺
@@ -319,7 +317,7 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
 
     //计算切线长度，来判断线段的交点个数
     let tangent = Math.sqrt(outerRadius*outerRadius-innerRadius*innerRadius)
-    // let intersectCounter = 0
+    let intersectCounter = 0
 
     //绘制axis之间的link
     let dataForRadialLine = data.link.map((d,i)=>{
@@ -371,51 +369,68 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
             }]
     })
     /*接受highlight ego的数组*/
-    let snArr = []
+    // let snArr = []
 
-    svg.append('g')
-    .selectAll('.link')
-    .data(dataForRadialLine)
-    .enter()
-    .append('path')
-    .attr('class', 'link')
-    .attr('d', radialLine)
-    .each(d=>{
-        if(Math.sqrt(Math.pow(d[0].radius,2)+(Math.pow(d[1].radius,2))-2*d[0].radius*d[1].radius*Math.cos(d[0].angle-d[1].angle))>tangent){
-            // intersectCounter++;
-            snArr.push(d)
-        }
-    })
+    let links = svg.append('g')
+        .selectAll('.link')
+        .data(dataForRadialLine)
+        .enter()
+        .append('path')
+        .attr('class', 'link')
+        .attr('d', radialLine)
+        .attr('stroke', d => {
+            let name = d[0].name
+            let color;
+            playerMap.forEach((item,i)=>{
+                if(item.player === name){
+                    color = item.color;
+                }
+            })
+            return color;
+        })
+        .each(d=>{
+            if(Math.sqrt(Math.pow(d[0].radius,2)+(Math.pow(d[1].radius,2))-2*d[0].radius*d[1].radius*Math.cos(d[0].angle-d[1].angle))>tangent){
+                intersectCounter++;
+                snArr.push(d)
+            }
+        })
+        .on('mouseover', mouseover)
+        .on("mouseout", mouseout)
 
+    window.links = links
+    document.getElementById('counterid').innerHTML =intersectCounter
 
 
     //画D区域的link
-    // let clip = svg.append('defs')
-    //     .append('clipPath')
-    //     .attr('id', 'clip')
-    //     .append('circle')
-    //     .attr('r', innerRadius)
+    let clip = svg.append('defs')
+        .append('clipPath')
+        .attr('id', 'clip')
+        .append('circle')
+        .attr('r', innerRadius-1.5)
 
     let link_d = svg.append('g')
-        .attr('class','HL')
-        // .attr('clip-path', 'url(#clip)')
-        .selectAll('.link-d-HL')
-        .data(snArr)
+        .attr('clip-path', 'url(#clip)')
+        .selectAll('.link-d')
+        .data(dataForRadialLine)
         .enter()
         .append('path')
-        .attr('class', 'link-d-HL')
+        .attr('class', 'link-d')
         .attr('d', radialLine)
-        .attr('stroke', d=>{
-            return colorMap(d[0])
+        .attr('stroke', d => {
+            let name = d[0].name
+            let color;
+            playerMap.forEach((item,i)=>{
+                if(item.player === name){
+                    color = item.color;
+                }
+            })
+            return color;
         })
-        .attr('stroke-width', 5)
+        .attr('stroke-width', 5.5)
         .on('mouseover', mouseover_d)
-        .on("mouseout", mouseout_d)
-
+        .on("mouseout", mouseout_d);
 
     window.link_d = link_d
-    // document.getElementById('counterid').innerHTML =intersectCounter
-
 
     //画分割线
     let separation = svg
@@ -477,5 +492,5 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
 
 
 export {
-    vis_for_HL
+    vis_mip
 }

@@ -14,7 +14,7 @@ export default class DM extends Component{
             selectPlot: '',
             filterAlgo: 'number',
             appendValue: '',
-            display: 'both',
+            display: 'dec',
 
             hover:{},
 
@@ -59,12 +59,26 @@ export default class DM extends Component{
     }
 
     handleSubmit(event) {
+        /*
+        * 解锁消失
+        * */
+
+        //TODO:不知道为什么这样的样式更改并没有生效
+/*
+        // document.getElementById('switchOption1').style.display = 'none';
+*/
+        /*下面的代码生效了*/
+        document.getElementById('loading').style.display = 'none';
+
         let self = this
-        initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
-        initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
+        /*原数组的深拷贝*/
+        let data = Object.assign({},this.state.viewData)
+        // initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
+        // initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
         this.state.selectPlot === '' ?
-            initChartDM('dm-svg', this.state.viewData) :
-            initChartDM('dm-svg', this.state.viewData, this.state.selectPlot);
+            initChartDM('dm-svg', data,false,{algo:'number',value:'15'},this.state.display)
+            :
+            initChartDM('dm-svg', data, this.state.selectPlot);
 
         /*
         * 处理暴露于全局的变量links，link_d，将mouseover的值在setState中设置，以便于在panel中显示
@@ -87,11 +101,6 @@ export default class DM extends Component{
             flagUpdate: true,
             flagAll: true
         })
-        //TODO:不知道为什么这样的样式更改并没有生效
-        document.getElementById('switchOption1').style.display = 'none';
-        /*下面的代码生效了*/
-        // document.getElementById('loading').style.display = 'none';
-        $("#loading").fadeOut();
     }
 
     handleAll(){
@@ -139,7 +148,7 @@ export default class DM extends Component{
                 }
             })
         })
-
+        //
         link_d.on('mouseover', function (d) {
             self.setState({
                 hover: {
@@ -154,7 +163,8 @@ export default class DM extends Component{
     componentDidMount() {
         /*get id from laravel blade*/
         let id = $('#system').attr("data-text");
-        axios.get(`/api/${id}`)
+        // axios.get(`/api/ini`)
+        axios.get(`/api/${id}_pts`)
             .then(res=>{
                 this.setState({
                     initData: res.data.data,
@@ -289,18 +299,18 @@ export default class DM extends Component{
 
                     <div onChange={this.displayHandle}>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="onlyInc" id="customRadio1" name="customRadio"
+                            <input type="radio" value="inc" id="customRadio1" name="customRadio"
                                    className="custom-control-input"/>
                             <label className="custom-control-label myText" htmlFor="customRadio1">Only Inc</label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="onlyDec" id="customRadio2" name="customRadio"
-                                   className="custom-control-input"/>
+                            <input type="radio" value="dec" id="customRadio2" name="customRadio"
+                                   className="custom-control-input" defaultChecked/>
                             <label className="custom-control-label myText" htmlFor="customRadio2">Only Dec</label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
                             <input type="radio" value="both" id="customRadio3" name="customRadio"
-                                   className="custom-control-input" defaultChecked/>
+                                   className="custom-control-input"/>
                             <label className="custom-control-label myText" htmlFor="customRadio3">Both</label>
                         </div>
                     </div>

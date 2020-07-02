@@ -10,7 +10,7 @@
 
 .link {
     stroke-opacity: 0.5;
-    stroke-width: 2.5px;
+    stroke-width: 1px;
     stroke-linecap: round;
     transition: all 0.3s ease;
 
@@ -78,3 +78,6 @@
     right: 100px
 }
 
+.link-d-HL{
+    stroke-width: 1px;
+}

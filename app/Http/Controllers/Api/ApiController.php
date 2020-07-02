@@ -136,14 +136,14 @@ class ApiController extends CommonController
                 if($mip1718->data[$i]['rank'] !== '#'){
                     $ele = [
                         'player'=>$mip1819->data[$i]['PLAYER'],
-                        'rank18'=>$mip1718->data[$i]['rank'],
-                        'rank19'=>$mip1819->data[$i]['rank']
+                        'pts18'=>+$mip1718->data[$i]['rank'],
+                        'pts19'=>+$mip1819->data[$i]['rank']
                     ];
                     array_push($mip, $ele);
                 }
             }
         }
-        return $mip;
+        return $this->response($mip);
     }
 
     public function nba_mip_reb()
@@ -155,15 +155,15 @@ class ApiController extends CommonController
                 if ($mip1718->data[$i]['rank'] !== '#') {
                     $ele = [
                         'player' => $mip1819->data[$i]['PLAYER'],
-                        'reb18' => $mip1718->data[$i]['rank'],
-                        'reb19' => $mip1819->data[$i]['rank']
+                        'reb18' => +$mip1718->data[$i]['rank'],
+                        'reb19' => +$mip1819->data[$i]['rank']
                     ];
                     array_push($mip, $ele);
                 }
             }
         }
 
-        return $mip;
+        return $this->response($mip);
     }
 
     public function nba_mip_ast()
@@ -175,14 +175,14 @@ class ApiController extends CommonController
                 if ($mip1718->data[$i]['rank'] !== '#') {
                     $ele = [
                         'player' => $mip1819->data[$i]['PLAYER'],
-                        'ast18' => $mip1718->data[$i]['rank'],
-                        'ast19' => $mip1819->data[$i]['rank']
+                        'ast18' => +$mip1718->data[$i]['rank'],
+                        'ast19' => +$mip1819->data[$i]['rank']
                     ];
                     array_push($mip, $ele);
                 }
             }
         }
-        return $mip;
+        return $this->response($mip);
     }
 
     public function nba_mip_FG()
@@ -193,13 +193,13 @@ class ApiController extends CommonController
             if($mip1718->data[$i]['rank'] !== '#'){
                 $ele = [
                     'player'=>$mip1819->data[$i]['PLAYER'],
-                    'FG18'=>$mip1718->data[$i]['rank'],
-                    'FG19'=>$mip1819->data[$i]['rank']
+                    'FG18'=>+$mip1718->data[$i]['rank'],
+                    'FG19'=>+$mip1819->data[$i]['rank']
                 ];
                 array_push($mip, $ele);
             }
         }
-        return $mip;
+        return $this->response($mip);
     }
 
     public function nba_mip_min()
@@ -210,12 +210,12 @@ class ApiController extends CommonController
             if($mip1718->data[$i]['rank'] !== '#'){
                 $ele = [
                     'player'=>$mip1819->data[$i]['PLAYER'],
-                    'PN18'=>$mip1718->data[$i]['rank'],
-                    'PN19'=>$mip1819->data[$i]['rank']
+                    'PN18'=>+$mip1718->data[$i]['rank'],
+                    'PN19'=>+$mip1819->data[$i]['rank']
                 ];
                 array_push($mip, $ele);
             }
         }
-        return $mip;
+        return $this->response($mip);
     }
 }
