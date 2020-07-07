@@ -35,7 +35,20 @@
     padding: 10px;
     font: 12px sans-serif;
     background: lightsteelblue;
-    border: 0px;
+    border: 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    text-align: left;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+.tooltipHL {
+    position: absolute;
+    padding: 1px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 10px;
     border-radius: 8px;
     pointer-events: none;
     text-align: left;
@@ -44,7 +57,12 @@
 }
 
 .link:hover {
-    stroke-width: 6px;
+    stroke-width: 10px;
+    stroke-opacity: 1;
+}
+
+.link-d:hover{
+    stroke-width: 10px;
     stroke-opacity: 1;
 }
 

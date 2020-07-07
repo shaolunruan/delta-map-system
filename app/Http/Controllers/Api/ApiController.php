@@ -206,12 +206,12 @@ class ApiController extends CommonController
     {
         $mip1718 = new Csv('../storage/dataFile/nba_mip_min/mip1718.csv');
         $mip1819 = new Csv('../storage/dataFile/nba_mip_min/mip1819.csv');
-        for($i = 0,$mip = [];$i<100;$i++){
+        for($i = 0,$mip = [];$i<94;$i++){
             if($mip1718->data[$i]['rank'] !== '#'){
                 $ele = [
                     'player'=>$mip1819->data[$i]['PLAYER'],
-                    'PN18'=>+$mip1718->data[$i]['rank'],
-                    'PN19'=>+$mip1819->data[$i]['rank']
+                    'min18'=>+$mip1718->data[$i]['rank'],
+                    'min19'=>+$mip1819->data[$i]['rank']
                 ];
                 array_push($mip, $ele);
             }

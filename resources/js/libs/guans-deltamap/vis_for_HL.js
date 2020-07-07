@@ -97,7 +97,15 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
     function colorMap(d){
         /* add参数没有指定时 */
         if(!add){
-
+            acs = data.link.reduce((prev,cur)=>{
+                if(cur.delta>=0){
+                    prev.push(cur.delta)
+                    return prev;
+                }
+                return prev;
+            },[])
+            colorAsc = d3.scaleSequential(d3.interpolateLab("#b5ffc2", "#278f39"))
+                .domain(d3.extent(acs));
             return d.delta>=0? colorAsc(d.delta) : colorDec(d.delta);
             /* add参数指定为数值型时 */
             //TODO:定制add为布尔值时的颜色映射
@@ -311,10 +319,12 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
         .style("font-size", 12)
         .style('font-weight', 500)
 
-    //定义tooltip的selection
+    //定义tooltipHL的selection
     let div = select('body')
         .append('div')
-        .attr('class', 'tooltip')
+        .attr('class', 'tooltipHL')
+        .attr('width',285)
+        .attr('height',184)
         .style('opacity', 0);
 
     //计算切线长度，来判断线段的交点个数
@@ -373,7 +383,7 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
     /*接受highlight ego的数组*/
     let snArr = []
 
-    svg.append('g')
+    let link_d = svg.append('g')
     .selectAll('.link')
     .data(dataForRadialLine)
     .enter()
@@ -386,7 +396,8 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
             snArr.push(d)
         }
     })
-
+        .on('mouseover', mouseover)
+        .on("mouseout", mouseout)
 
 
     //画D区域的link
@@ -396,7 +407,7 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
     //     .append('circle')
     //     .attr('r', innerRadius)
 
-    let link_d = svg.append('g')
+    let link = svg.append('g')
         .attr('class','HL')
         // .attr('clip-path', 'url(#clip)')
         .selectAll('.link-d-HL')
@@ -429,20 +440,21 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
         .attr('stroke-dasharray', '6,3')
 
 
-    //交互：tooltip  mouseover
+    //交互：tooltipHL  mouseover
     function mouseover(d,i){
-        select('.tooltip')
+        console.log('hover')
+        select('.tooltipHL')
             .transition()
             .duration(170)
             .style('opacity', 0.9);
         div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
-            .style('left', (event.offsetX) + "px")
-            .style("top", (event.offsetY - 28) + "px");
+            .style('left', (event.offsetX+150) + "px")
+            .style("top", (event.offsetY) + "px");
         link_d.style('display', 'none')
     }
 
     function mouseout(d,i){
-        select('.tooltip')
+        select('.tooltipHL')
             .transition()
             .duration(500)
             .style("opacity", 0);
@@ -450,18 +462,19 @@ let vis_for_HL = (svg, data, c=[], r=[], add=false)=>{
     }
 
     function mouseover_d(d,i){
-        select('.tooltip')
+        console.log('hover')
+        select('.tooltipHL')
             .transition()
             .duration(170)
             .style('opacity', 0.9);
         div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
-            .style('left', (event.offsetX) + "px")
-            .style("top", (event.offsetY - 28) + "px");
+            .style('left', (event.offsetX+150) + "px")
+            .style("top", (event.offsetY) + "px");
         link_d.style('display', 'none')
     }
 
     function mouseout_d(d,i){
-        select('.tooltip')
+        select('.tooltipHL')
             .transition()
             .duration(500)
             .style("opacity", 0);

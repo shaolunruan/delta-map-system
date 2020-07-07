@@ -23,7 +23,7 @@ let getExtentFromOutput = (data)=>{
     return [min, max];
 };
 
-let vis_mip = (svg, data, c=[], r=[], add=false)=>{
+let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
     /*
     Customize error message.
     */
@@ -134,52 +134,58 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
     //画放射的标识虚线
     let radialLine = d3.radialLine()
         .angle(d=>d.angle)
-        .radius(d=>d.radius)
+        .radius(d=>d.radius);
 
-    let strokeDataForPolarAxis = data.axisnodePos.map((d,i)=>{
-        return d.tick%10 == 0 ||d.uid == 0 ||d.uid == data.axisnodePos.length?
-            [
-                {
-                    angle: 0,
-                    radius: 0
-                },
-                {
-                    angle: d.angle,
-                    radius: outerRadius
-                }
-            ]:[ ];
-    })
+    let strokeDataForPolarAxis;
 
-    svg.append('g')
-        .selectAll('.radial-stroke')
-        .data(strokeDataForPolarAxis)
-        .enter()
-        .append('path')
-        .attr('class', 'radial-stroke')
-        .attr('d', radialLine)
+    if(display === 'inc'){
+        strokeDataForPolarAxis = data.axisnodePos.map((d,i)=>{
+            return d.tick%10 == 0 ||d.uid == 0 ||d.uid == data.axisnodePos.length?
+                [
+                    {
+                        angle: 0,
+                        radius: 0
+                    },
+                    {
+                        angle: d.angle,
+                        radius: outerRadius
+                    }
+                ]:[ ];
+        })
+
+        svg.append('g')
+            .selectAll('.radial-stroke')
+            .data(strokeDataForPolarAxis)
+            .enter()
+            .append('path')
+            .attr('class', 'radial-stroke')
+            .attr('d', radialLine)
+    }
 
     //Neg
-    strokeDataForPolarAxis = data.axisnodeNeg.map((d,i)=>{
-        return d.tick%10 == 0 ||d.uid == 0 ||d.uid == data.axisnodeNeg.length?
-            [
-                {
-                    angle: 0,
-                    radius: 0
-                },
-                {
-                    angle: d.angle,
-                    radius: outerRadius
-                }
-            ]:[ ];
-    })
+    if(display === 'dec'){
+        strokeDataForPolarAxis = data.axisnodeNeg.map((d,i)=>{
+            return d.tick%10 == 0 ||d.uid == 0 ||d.uid == data.axisnodeNeg.length?
+                [
+                    {
+                        angle: 0,
+                        radius: 0
+                    },
+                    {
+                        angle: d.angle,
+                        radius: outerRadius
+                    }
+                ]:[ ];
+        })
 
-    svg.append('g')
-        .selectAll('.radial-stroke')
-        .data(strokeDataForPolarAxis)
-        .enter()
-        .append('path')
-        .attr('class', 'radial-stroke')
-        .attr('d', radialLine)
+        svg.append('g')
+            .selectAll('.radial-stroke')
+            .data(strokeDataForPolarAxis)
+            .enter()
+            .append('path')
+            .attr('class', 'radial-stroke')
+            .attr('d', radialLine)
+    }
 
     //画outer环形坐标的圆
     svg.append('g')
@@ -386,7 +392,12 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
                     color = item.color;
                 }
             })
-            return color;
+            if(display === 'dec'){
+                return d[0].delta<=0?color:'grey';
+            }
+            if(display === 'inc'){
+                return d[0].delta>=0?color:'grey';
+            }
         })
         .each(d=>{
             if(Math.sqrt(Math.pow(d[0].radius,2)+(Math.pow(d[1].radius,2))-2*d[0].radius*d[1].radius*Math.cos(d[0].angle-d[1].angle))>tangent){
@@ -424,7 +435,12 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
                     color = item.color;
                 }
             })
-            return color;
+            if(display === 'dec'){
+                return d[0].delta<=0?color:'';
+            }
+            if(display === 'inc'){
+                return d[0].delta>=0?color:'';
+            }
         })
         .attr('stroke-width', 5.5)
         .on('mouseover', mouseover_d)
@@ -451,8 +467,8 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
             .duration(170)
             .style('opacity', 0.9);
         div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
-            .style('left', (event.offsetX) + "px")
-            .style("top", (event.offsetY - 28) + "px");
+            .style('left', (event.offsetX+150) + "px")
+            .style("top", (event.offsetY) + "px");
         link_d.style('display', 'none')
     }
 
@@ -470,9 +486,10 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
             .duration(170)
             .style('opacity', 0.9);
         div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
-            .style('left', (event.offsetX) + "px")
-            .style("top", (event.offsetY - 28) + "px");
-        link_d.style('display', 'none')
+            .style('left', (event.offsetX+150) + "px")
+            .style("top", (event.offsetY) + "px");
+        // link_d.style('display', 'none')
+            clip.attr('r', outerRadius)
     }
 
     function mouseout_d(d,i){
@@ -481,6 +498,7 @@ let vis_mip = (svg, data, c=[], r=[], add=false)=>{
             .duration(500)
             .style("opacity", 0);
         link_d.style('display', 'block')
+        clip.attr('r', innerRadius)
     }
 
     //打造vis的接口，允许user在外部可更改

@@ -7,7 +7,7 @@ import * as d3 from 'd3';
 // import updateInfo from "./parts/updateInfo";
 import { updateSnCounter, getOptionSnCounter } from "./parts/updateSen";
 
-export default function initChartDM(domId = null, data = null,add=false,filter=false,display='all') {
+export default function initChartDM(domId = null, data = null,add=false,filter=false,display='dec') {
     let svg = d3.select(`#${domId}`)
         .attr('width', '100%')
         .attr('height', '100%')
@@ -62,7 +62,10 @@ export default function initChartDM(domId = null, data = null,add=false,filter=f
             })
         }
         alpha = ang1-ang2
-        /*定义外圆和内圆的半径*/
+        /*
+        * /*定义外圆和内圆的半径
+        */
+
         xr = 0.87*yo;
         yr = xr*Math.cos(alpha)
         r = [xr,yr]
@@ -76,26 +79,31 @@ export default function initChartDM(domId = null, data = null,add=false,filter=f
     let id = $('#system').attr("data-text");
 
     /*根据传入的display处理数据*/
-    if(display === 'inc'){
-        data.link = data.link.filter((value)=>{
-            return value.delta >=0;
-        })
-    }
-    if(display === 'dec'){
-        data.link = data.link.filter((value)=>{
-            return value.delta <=0;
-        })
-    }
+    // if(display === 'inc'){
+    //     data.link = data.link.filter((value)=>{
+    //         return value.delta >=0;
+    //     })
+    // }
+    // if(display === 'dec'){
+    //     data.link = data.link.filter((value)=>{
+    //         return value.delta <=0;
+    //     })
+    // }
+    /*
+    * FIXME:display的all模式有bug。
+    * */
+
+
     /*draw the plot*/
-    if(id === 'mip'){
-        vis_mip(svg, data, o, r,add)
+    if(id.match(new RegExp(/^mip/))){
+        vis_mip(svg, data, o, r,add,display)
     }else{
         vis(svg, data, o, r, add)
     }
 
     /*Add another plot to show HL ego instead of all ego*/
     let [ir] = r;
-    vis_for_HL(svg, data, o, [ir,ir], add)
+    vis_for_HL(svg, data, o, r, add)
 
     /*
     更新右侧的第三个示数组件

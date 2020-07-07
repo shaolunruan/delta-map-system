@@ -74,7 +74,18 @@
                 <p class="card-text">
                     Analyse the 2018-19 NBA Most Improved Player selection via Delta Map System.
                 </p>
-                <a href="{{route('gallery.dmsystem',['id'=>'mip'])}}" class="btn btn-primary">Get Started</a>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Get Started
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{route('gallery.dmsystem',['id'=>'mip_pts'])}}">Points</a>
+                        <a class="dropdown-item" href="{{route('gallery.dmsystem',['id'=>'mip_reb'])}}">Rebounds</a>
+                        <a class="dropdown-item" href="{{route('gallery.dmsystem',['id'=>'mip_ast'])}}">Assists</a>
+                        <a class="dropdown-item" href="{{route('gallery.dmsystem',['id'=>'mip_FG'])}}">Field Goal</a>
+                        <a class="dropdown-item" href="{{route('gallery.dmsystem',['id'=>'mip_min'])}}">Minutes</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card" style="width: 18rem">

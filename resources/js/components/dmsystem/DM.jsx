@@ -13,7 +13,7 @@ export default class DM extends Component{
         this.state = {
             selectPlot: '',
             filterAlgo: 'number',
-            appendValue: '',
+            appendValue: 14,
             display: 'dec',
 
             hover:{},
@@ -72,11 +72,11 @@ export default class DM extends Component{
 
         let self = this
         /*原数组的深拷贝*/
-        let data = Object.assign({},this.state.viewData)
+        let data = this.state.viewData;
         // initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
         // initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
         this.state.selectPlot === '' ?
-            initChartDM('dm-svg', data,false,{algo:'number',value:'15'},this.state.display)
+            initChartDM('dm-svg', data, false, {algo: this.state.filterAlgo, value: this.state.appendValue}, this.state.display)
             :
             initChartDM('dm-svg', data, this.state.selectPlot);
 
@@ -115,7 +115,6 @@ export default class DM extends Component{
                 flagAll : true,
                 flagOnlyHL : false,
             })
-
         }
     }
 
@@ -126,13 +125,11 @@ export default class DM extends Component{
         if(!this.state.flagOnlyHL&&this.state.flagAll){
             document.getElementById('showAll').style.display = 'none';
             document.getElementById('showHL').style.display = 'block';
-
             this.setState({
                 flagOnlyHL : true,
                 flagAll : false,
             })
         }
-
     }
 
     setStateHover(){
@@ -164,7 +161,7 @@ export default class DM extends Component{
         /*get id from laravel blade*/
         let id = $('#system').attr("data-text");
         // axios.get(`/api/ini`)
-        axios.get(`/api/${id}_pts`)
+        axios.get(`/api/${id}`)
             .then(res=>{
                 this.setState({
                     initData: res.data.data,
@@ -301,17 +298,12 @@ export default class DM extends Component{
                         <div className="custom-control custom-radio custom-control-inline">
                             <input type="radio" value="inc" id="customRadio1" name="customRadio"
                                    className="custom-control-input"/>
-                            <label className="custom-control-label myText" htmlFor="customRadio1">Only Inc</label>
+                            <label className="custom-control-label myText" htmlFor="customRadio1">Only for Inc</label>
                         </div>
-                        <div className="custom-control custom-radio custom-control-inline">
+                        <div className="custom-control custom-radio custom-control-inline pull-right">
                             <input type="radio" value="dec" id="customRadio2" name="customRadio"
                                    className="custom-control-input" defaultChecked/>
-                            <label className="custom-control-label myText" htmlFor="customRadio2">Only Dec</label>
-                        </div>
-                        <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" value="both" id="customRadio3" name="customRadio"
-                                   className="custom-control-input"/>
-                            <label className="custom-control-label myText" htmlFor="customRadio3">Both</label>
+                            <label className="custom-control-label myText" htmlFor="customRadio2">Only for Dec</label>
                         </div>
                     </div>
 
