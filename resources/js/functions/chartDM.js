@@ -16,8 +16,8 @@ export default function initChartDM(domId = null, data = null,add=false,filter=f
     let ctrlpnlWidth = 250
 
     /*定义圆心的初始值*/
-    let xo = (document.getElementsByClassName('dm')[0].clientWidth-ctrlpnlWidth)/2
-    let yo = document.getElementsByClassName('dm')[0].clientHeight/2
+    let xo = $(`#${domId}`).parent().width()/2-50
+    let yo = $(`#${domId}`).parent().height()/2
     let o = [xo,yo]
 
     /*
@@ -89,9 +89,6 @@ export default function initChartDM(domId = null, data = null,add=false,filter=f
     //         return value.delta <=0;
     //     })
     // }
-    /*
-    * FIXME:display的all模式有bug。
-    * */
 
 
     /*draw the plot*/

@@ -6,6 +6,18 @@ function updateSnCounter(domId,option){
     /*刷新重置view，使之有重新刷新的效果*/
     snCounterChart.clear()
     snCounterChart.setOption(option);
+
+    document.getElementById('zoom-dm').onclick = function(){
+        echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
+        document.getElementById('zoom-in').style.display = 'block';
+    }
+
+    snCounterChart.on('click',function(params){
+        if(params.componentType === 'title'){
+            echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
+            document.getElementById('zoom-in').style.display = 'block';
+        }
+    })
 }
 
 
@@ -15,7 +27,8 @@ function getOptionSnCounter(data){
         title: {
             text: 'Ego Highlighted Chart',
             left: 'center',
-            top: 10,
+            top: 20,
+            triggerEvent:true,
             textStyle: {
                 color: '#6f6e6e',
                 fontWeight:'normal',
@@ -45,18 +58,18 @@ function getOptionSnCounter(data){
                 data: data.map(d => {
                     return {
                         name: d[0].name,
-                        value: d[0].delta
+                        value: Math.abs(d[0].delta)
                     }
                 }).sort(function (a, b) {
                     return a.value - b.value;
                 }),
                 roseType: 'radius',
                 label: {
-                    color: 'rgba(127,126,126,0.3)'
+                    color: 'rgb(187,187,187)'
                 },
                 labelLine: {
                     lineStyle: {
-                        color: 'rgba(26,26,26,0.3)'
+                        color: 'rgb(187,187,187)'
                     },
                     smooth: 0.2,
                     length: 10,

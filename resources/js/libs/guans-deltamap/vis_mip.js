@@ -255,7 +255,7 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
     //Pos
     let xAxisOuterPos = svg.append("g");
 
-    var xOuterTickPos = xAxisOuterPos
+    let xOuterTickPos = xAxisOuterPos
         .selectAll("g")
         .data(scale.ticks(max-min))//算出总tick数
         .enter().append("g")
@@ -286,7 +286,7 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
 
     let xAxisOuterNeg = svg.append("g");
 
-    var xOuterTickNeg = xAxisOuterNeg
+    let xOuterTickNeg = xAxisOuterNeg
         .selectAll("g")
         .data(scale2.ticks(max-min))//算出总tick数
         .enter().append("g")
@@ -316,10 +316,10 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
         .style('font-weight', 500)
 
     //定义tooltip的selection
-    let div = select('body')
-        .append('div')
-        .attr('class', 'tooltip')
-        .style('opacity', 0);
+    // let div = select('body')
+    //     .append('div')
+    //     .attr('class', 'tooltip')
+    //     .style('opacity', 0);
 
     //计算切线长度，来判断线段的交点个数
     let tangent = Math.sqrt(outerRadius*outerRadius-innerRadius*innerRadius)
@@ -419,7 +419,7 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
         .append('circle')
         .attr('r', innerRadius-1.5)
 
-    let link_d = svg.append('g')
+    let links_d = svg.append('g')
         .attr('clip-path', 'url(#clip)')
         .selectAll('.link-d')
         .data(dataForRadialLine)
@@ -427,6 +427,8 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
         .append('path')
         .attr('class', 'link-d')
         .attr('d', radialLine)
+        .on('mouseover', mouseover_d)
+        .on("mouseout", mouseout_d)
         .attr('stroke', d => {
             let name = d[0].name
             let color;
@@ -443,10 +445,8 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
             }
         })
         .attr('stroke-width', 5.5)
-        .on('mouseover', mouseover_d)
-        .on("mouseout", mouseout_d);
 
-    window.link_d = link_d
+    window.links_d = links_d
 
     //画分割线
     let separation = svg
@@ -462,14 +462,16 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
 
     //交互：tooltip  mouseover
     function mouseover(d,i){
+        console.log('hover')
         select('.tooltip')
             .transition()
             .duration(170)
             .style('opacity', 0.9);
-        div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
+        select('.tooltip')
+        .html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
             .style('left', (event.offsetX+150) + "px")
             .style("top", (event.offsetY) + "px");
-        link_d.style('display', 'none')
+        links_d.style('display', 'none')
     }
 
     function mouseout(d,i){
@@ -477,7 +479,7 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
             .transition()
             .duration(500)
             .style("opacity", 0);
-        link_d.style('display', 'block')
+        links_d.style('display', 'block')
     }
 
     function mouseover_d(d,i){
@@ -485,10 +487,11 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
             .transition()
             .duration(170)
             .style('opacity', 0.9);
-        div.html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
+        select('.tooltip')
+            .html(`Name: ${d[0].name}</br>Period One: ${d[0].from}</br>Period Two: ${d[0].to}</br>delta: ${d[0].delta}`)
             .style('left', (event.offsetX+150) + "px")
             .style("top", (event.offsetY) + "px");
-        // link_d.style('display', 'none')
+        // links_d.style('display', 'none')
             clip.attr('r', outerRadius)
     }
 
@@ -497,14 +500,14 @@ let vis_mip = (svg, data, c=[], r=[], add=false,display='dec')=>{
             .transition()
             .duration(500)
             .style("opacity", 0);
-        link_d.style('display', 'block')
+        links_d.style('display', 'block')
         clip.attr('r', innerRadius)
     }
 
     //打造vis的接口，允许user在外部可更改
     return {
         links: links,
-        link_d: link_d
+        links_d: links_d
     };
 }
 

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import * as dm from '../../libs/guans-deltamap/deltamap.min.js'
+import * as d3 from 'd3'
+import echarts from 'echarts'
 import axios from "axios";
 
 import {initChartTop, getOptionChartTop} from '../../functions/chartTop'
@@ -33,6 +35,7 @@ export default class DM extends Component{
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleAll = this.handleAll.bind(this);
         this.handleOnlyHL = this.handleOnlyHL.bind(this)
+        this.zoom = this.zoom.bind(this)
 
     }
 
@@ -64,25 +67,27 @@ export default class DM extends Component{
         * */
 
         //TODO:不知道为什么这样的样式更改并没有生效
-/*
-        // document.getElementById('switchOption1').style.display = 'none';
-*/
+        /*
+                // document.getElementById('switchOption1').style.display = 'none';
+        */
         /*下面的代码生效了*/
         document.getElementById('loading').style.display = 'none';
 
         let self = this
-        /*原数组的深拷贝*/
+
         let data = this.state.viewData;
-        // initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
-        // initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
+        initChartTop('topChart', getOptionChartTop(this.state.viewData, this.state.selectPlot), this.state.viewData);
+        initChartBottom('bottomChart', getOptionChartBottom(this.state.initData), this.state.initData);
+
         this.state.selectPlot === '' ?
-            initChartDM('dm-svg', data, false, {algo: this.state.filterAlgo, value: this.state.appendValue}, this.state.display)
+            initChartDM('dm-svg', data, false, {
+                algo: this.state.filterAlgo,
+                value: this.state.appendValue
+            }, this.state.display)
             :
             initChartDM('dm-svg', data, this.state.selectPlot);
 
-        /*
-        * 处理暴露于全局的变量links，link_d，将mouseover的值在setState中设置，以便于在panel中显示
-        * */
+
         this.setStateHover();
 
         /*
@@ -91,7 +96,7 @@ export default class DM extends Component{
         this.setState({
             flagUpdate: false,
             flagAll: false,
-            flagOnlyHL:false
+            flagOnlyHL: false
         })
 
         /*
@@ -146,7 +151,7 @@ export default class DM extends Component{
             })
         })
         //
-        link_d.on('mouseover', function (d) {
+        links_d.on('mouseover', function (d) {
             self.setState({
                 hover: {
                     name: d[0].name,
@@ -157,6 +162,17 @@ export default class DM extends Component{
             })
         })
     }
+
+    zoom(){
+
+        // let snCounterChart = echarts.init(document.getElementById('zoom-in-chart'))
+        // /*刷新重置view，使之有重新刷新的效果*/
+        // snCounterChart.clear()
+        //
+        // echarts.init(document.getElementById('zoom-in-chart')).setOption(snArr)
+        // document.getElementById('zoom-in').style.display = 'block';
+    }
+
     componentDidMount() {
         /*get id from laravel blade*/
         let id = $('#system').attr("data-text");
@@ -170,14 +186,23 @@ export default class DM extends Component{
 
                 // optionChartTop = update_optionChartTop
                 // console.log(optionChartTop)
-
             })
-
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     console.log(!this.state.selectPlot == 'Plot-#'?typeof this.state.initData[0][this.state.selectPlot]:'')
+    // componentWillMount() {
+    //     console.log('will');
+    //     let style = document.getElementsByClassName('detail')[0].style
+    //     style.background = 'rgba(1,0,0,1)'
+    //
     // }
+
+    componentDidUpdate(props, state) {
+        let style = document.getElementsByClassName('detail')[0].style
+        style.backgroundColor = 'rgba(1,0,0,1)'
+
+        style.backgroundColor = 'rgba(1,0,0,0.5)'
+    }
+
 
     render() {
         /*条件渲染表头*/
@@ -317,6 +342,33 @@ export default class DM extends Component{
                     {/*{{-- dm视图--}}*/}
                     <div className="dm">
 
+                        <div className="detail">
+                        <table className="table table-sm  table-bordered">
+                            <tbody>
+                            <tr>
+                                <td style={{textAlign: 'center'}}>Name</td>
+                                <td style={{textAlign: 'center'}}>{this.state.hover.name}</td>
+                            </tr>
+                            <tr>
+                                <td style={{textAlign: 'center'}}>V-1</td>
+                                <td style={{textAlign: 'center'}}>{this.state.hover.v1}</td>
+                            </tr>
+                            <tr>
+                                <td style={{textAlign: 'center'}}>V-2</td>
+                                <td style={{textAlign: 'center'}}>{this.state.hover.v2}</td>
+                            </tr>
+                            <tr>
+                                <th style={{textAlign: 'center'}}>delta</th>
+                                <td style={{textAlign: 'center'}}>{this.state.hover.delta}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+
+                        <div id={'zoom-dm'} onClick={this.zoom}>
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </div>
+
                         <i className="fa fa-lock" id={'loading'} aria-hidden="true"></i>
                         <svg id="dm-svg"></svg>
 
@@ -332,28 +384,6 @@ export default class DM extends Component{
 
                         {/*dm图右侧的参数展示区域*/}
                         <div className="right-dm pull-right d-flex flex-column">
-                            <div className="detail">
-                                <table className="table table-sm table-secondary table-bordered">
-                                    <tbody>
-                                    <tr>
-                                        <td style={{textAlign: 'center', width: '100px'}}>Name</td>
-                                        <td style={{textAlign: 'center'}}>{this.state.hover.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{textAlign: 'center'}}>V-1</td>
-                                        <td style={{textAlign: 'center'}}>{this.state.hover.v1}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{textAlign: 'center'}}>V-2</td>
-                                        <td style={{textAlign: 'center'}}>{this.state.hover.v2}</td>
-                                    </tr>
-                                    <tr>
-                                        <th style={{textAlign: 'center'}}>delta</th>
-                                        <td style={{textAlign: 'center'}}>{this.state.hover.delta}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                             <div className="sensitivity-stats">
                                 <div className='sensitivity-stats-text'>Counter</div>
                                 <div className="counter pull-right display-2" id={'counterid'}></div>

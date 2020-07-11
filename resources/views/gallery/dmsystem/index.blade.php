@@ -122,6 +122,9 @@
             top: -5px;
 
         }
+        #dm-svg{
+            width: 672px;
+        }
         .dm>.switch {
             position: absolute;
             top:0;
@@ -138,13 +141,82 @@
         .dm>svg>#showHL .HL>path:hover{
             stroke-width: 8px;
         }
+        .dm>.detail{
+            position: absolute;
+            background-color: rgba(1,0,0,0.5);
+            transition-duration: 3s;
+            transition-property: all;
+            transition-timing-function: ease;
+            transition-delay: 0s;
+            top:0;
+            left: 0;
+            width: 180px;
+        }
+        #zoom-in {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            display: none;
+            text-align: center;
+            background-color: rgba(36, 36, 36, 0.9);
+        }
+        .snCounter{
+            position: relative;
+        }
+        .snCounter>button{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            z-index:10
+        }
+        #zoom-in>.close {
+            font-size: 3em;
+            color: #fff3cd;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            position: absolute;
+            right: 70px;
+            top: 20px;
+            cursor: pointer;
+        }
+        #zoom-in-chart {
+            width: 900px;
+            height: 700px;
+            margin: 0 auto ;
+            opacity: 100%;
+        }
+        .dm>#zoom-dm {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            text-align: center;
+            color: #747474;
+            cursor: pointer;
+        }
     </style>
     <div>
+        <div id="zoom-in">
+            <div id="zoom-in-chart">
+                <svg id="zoom-in-svg"></svg>
+            </div>
+            <span class="close" onclick="x()">x</span>
+        </div>
         {{--所有的视图组件--}}
         <div id="system" data-text={{$id}}></div>
-
     </div>
-    <script type="text/javascript" src="../js/app.js"></script>
+    <script>
+        function x(){
+            document.getElementById('zoom-in').style.display = 'none';
+        }
     </script>
+
+    <script type="text/javascript" src="../js/app.js"></script>
+
 @endsection
 
