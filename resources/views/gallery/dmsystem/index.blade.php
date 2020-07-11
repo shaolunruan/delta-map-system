@@ -184,7 +184,7 @@
             cursor: pointer;
         }
         #zoom-in-chart {
-            width: 900px;
+            width: 1200px;
             height: 700px;
             margin: 0 auto ;
             opacity: 100%;
@@ -229,15 +229,15 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Welcome to Delta Map System!</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Welcome to Delta Map System! &hearts;</h5>
                     </div>
                     <div class="modal-body">
-                        &bull;Delta Map module is the central chart.</br>
-                        &bull;Use left panel to customize your needs.</br>
-                        &bull;Click stats module to zoom in and interact.</br>
-                        &bull;Click `update DeltaMap` to refresh the system.</br>
-                        &bull;Note that Exploration Mode is available only if the data field is multiple.</br>
-                        &bull;Contact haywardryan@foxmail.com if you have any flourished idea and suggestions.</br>
+                        &bull; Delta Map module is the central chart.</br>
+                        &bull; Use left panel to customize your needs.</br>
+                        &bull; Click stats modules' title to zoom in and interact.</br>
+                        &bull; Click `update DeltaMap` to refresh the system.</br>
+                        &bull; Note that Exploration Mode is available only if the data field is multiple.</br>
+                        &bull; Contact haywardryan@foxmail.com if you have any flourished idea and suggestions.</br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" onclick="close_manual()" class="btn btn-primary">Close</button>

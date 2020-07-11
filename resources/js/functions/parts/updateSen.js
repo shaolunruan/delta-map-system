@@ -8,6 +8,7 @@ function updateSnCounter(domId,option){
     snCounterChart.setOption(option);
 
     document.getElementById('zoom-dm').onclick = function(){
+        echarts.init(document.getElementById('zoom-in-chart')).clear();
         echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
         document.getElementById('zoom-in').style.display = 'block';
     }

@@ -10,6 +10,7 @@ function initChartTop(domId,option,data){
 
     topChart.on('click',function(params){
         if(params.componentType === 'title'){
+            echarts.init(document.getElementById('zoom-in-chart')).clear();
             echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
             document.getElementById('zoom-in').style.display = 'block';
         }

@@ -1,4 +1,5 @@
 import echarts from 'echarts';
+import * as dm from 'guans-deltamap'
 
 function initChartBottom(domId,option,data){
     let bottomChart = echarts.init(document.getElementById(domId))
@@ -6,6 +7,13 @@ function initChartBottom(domId,option,data){
     bottomChart.clear()
     bottomChart.setOption(option);
 
+    bottomChart.on('click',function(params){
+        if(params.componentType === 'title'){
+            echarts.init(document.getElementById('zoom-in-chart')).clear();
+            echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
+            document.getElementById('zoom-in').style.display = 'block';
+        }
+    })
 
     // Enable data zoom when user click bar.
     let zoomSize = 6;
@@ -25,10 +33,13 @@ function initChartBottom(domId,option,data){
 }
 
 let getOptionChartBottom =(data=data)=> {
+    let [name, start, end] = Object.keys(data[0])
+
     let xAxisData = data.reduce((prev,cur)=>{
-        prev.push(cur.name);
+        prev.push(cur[name]);
         return prev;
     },[])
+
 
     // let yAxisData = data.link.reduce((prev,cur)=>{
     //     prev.push(cur.from);
@@ -44,7 +55,8 @@ let getOptionChartBottom =(data=data)=> {
                 fontSize: 16,
                 lineHeight: 15
             },
-            left:'left'
+            left:'left',
+            triggerEvent:true,
         },
         tooltip: {
             trigger: 'axis',
@@ -60,7 +72,6 @@ let getOptionChartBottom =(data=data)=> {
         legend: {
             data: ['Stage_1', 'Stage_2']
         },
-        barWidth:17,
         xAxis: {
             type: 'category',
             data: xAxisData
@@ -83,7 +94,7 @@ let getOptionChartBottom =(data=data)=> {
                     )
                 },
                 data: data.reduce((prev,cur)=>{
-                    prev.push(cur.start);
+                    prev.push(cur[start]);
                     return prev;
                 },[])
             },
@@ -101,7 +112,7 @@ let getOptionChartBottom =(data=data)=> {
                     )
                 },
                 data: data.reduce((prev,cur)=>{
-                    prev.push(cur.end);
+                    prev.push(cur[end]);
                     return prev;
                 },[])
             }
