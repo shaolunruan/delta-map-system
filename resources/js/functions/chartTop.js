@@ -8,6 +8,13 @@ function initChartTop(domId,option,data){
     topChart.clear();
     topChart.setOption(option)
 
+    topChart.on('click',function(params){
+        if(params.componentType === 'title'){
+            echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
+            document.getElementById('zoom-in').style.display = 'block';
+        }
+    })
+
 
     // Enable data zoom when user click bar.
     let zoomSize = 6;
@@ -69,7 +76,8 @@ let getOptionChartTop =(data=data,add=false)=> {
                 fontSize: 14,
                 lineHeight: 8
             },
-            left:'center'
+            left:'center',
+            triggerEvent:true,
         },
         //默认bar的颜色
         color: ['#6c5ce7'],

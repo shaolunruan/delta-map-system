@@ -103,6 +103,7 @@
             position: relative;
             background-color: #f8f8f8;
             border-bottom: solid 3px #fff;
+            cursor: pointer;
         }
         .dmsystem .container-right .right-dm>.sensitivity-stats>.sensitivity-stats-text {
             position: absolute;
@@ -173,12 +174,12 @@
             width: 100px;
             z-index:10
         }
-        #zoom-in>.close {
+        .close {
             font-size: 3em;
-            color: #fff3cd;
+            color: #868686;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             position: absolute;
-            right: 70px;
+            right: 40px;
             top: 20px;
             cursor: pointer;
         }
@@ -199,13 +200,63 @@
             color: #747474;
             cursor: pointer;
         }
+        #zoom-in>.bg-button {
+            position: absolute;
+            right: 40px;
+            bottom: 20px;
+            float: right;
+        }
+        #manual{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            /*display: none;*/
+            text-align: center;
+            background-color: rgba(36, 36, 36, 0.9);
+        }
+        /*.modal-content{*/
+        /*    text-indent: 1em;*/
+        /*}*/
     </style>
     <div>
+        {{--
+        自动弹出的模态框
+        --}}
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Welcome to Delta Map System!</h5>
+                    </div>
+                    <div class="modal-body">
+                        &bull;Delta Map module is the central chart.</br>
+                        &bull;Use left panel to customize your needs.</br>
+                        &bull;Click stats module to zoom in and interact.</br>
+                        &bull;Click `update DeltaMap` to refresh the system.</br>
+                        &bull;Note that Exploration Mode is available only if the data field is multiple.</br>
+                        &bull;Contact haywardryan@foxmail.com if you have any flourished idea and suggestions.</br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="close_manual()" class="btn btn-primary">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div id="zoom-in">
             <div id="zoom-in-chart">
                 <svg id="zoom-in-svg"></svg>
             </div>
             <span class="close" onclick="x()">x</span>
+            <div class="bg-button btn-group-vertical">
+                <button type="button" class="btn btn-secondary" onclick="bg_grey()">Primary</button>
+                <button type="button" class="btn btn-light" onclick="bg_white()">White</button>
+                <button type="button" class="btn btn-dark" onclick="bg_dark()">Dark</button>
+            </div>
         </div>
         {{--所有的视图组件--}}
         <div id="system" data-text={{$id}}></div>
@@ -214,6 +265,26 @@
         function x(){
             document.getElementById('zoom-in').style.display = 'none';
         }
+
+        function bg_grey(){
+            document.getElementById('zoom-in').style.backgroundColor = 'rgba(36, 36, 36, 0.9)'
+        }
+
+        function bg_white(){
+            document.getElementById('zoom-in').style.backgroundColor = 'white'
+        }
+
+        function bg_dark(){
+            document.getElementById('zoom-in').style.backgroundColor = 'rgb(0,0,0)'
+        }
+
+        function close_manual(){
+            $('#myModal').modal('hide');
+        }
+
+        $(window).on('load',function(){
+            $('#myModal').modal('show');
+        });
     </script>
 
     <script type="text/javascript" src="../js/app.js"></script>

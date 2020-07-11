@@ -12,6 +12,11 @@ function updateSnCounter(domId,option){
         document.getElementById('zoom-in').style.display = 'block';
     }
 
+    document.querySelector('.sensitivity-stats').onclick = function(){
+        echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
+        document.getElementById('zoom-in').style.display = 'block';
+    }
+
     snCounterChart.on('click',function(params){
         if(params.componentType === 'title'){
             echarts.init(document.getElementById('zoom-in-chart')).setOption(option)
